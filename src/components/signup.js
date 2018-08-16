@@ -31,7 +31,7 @@ class SignUp extends Component{
     render(){
         const user = this.state;
         return(
-            <div className = "jumbotron">
+            <div className = "container main-container">
                     <form onSubmit={this.handleSubmit}>
                             <div class="form-group row">
                                 <div class="col-sm-2"></div>
@@ -81,7 +81,7 @@ class SignUp extends Component{
                             <div class="form-group row">
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4">
-                                <a href="login.html" type="submit" class="btn btn-primary">submit</a>
+                                <a href="login.html" type="submit" class="btn btn-primary btn-sm">submit</a>
                                 </div>
                                 <div class="col-sm-4"></div>
                             </div>
