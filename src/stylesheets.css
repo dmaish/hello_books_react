@@ -1,0 +1,53 @@
+/* Jumbotron (hero) */
+.jumbotron {
+    position: relative;
+    background: url("./assets/libpic.jpg");
+    /*no-repeat: bottom center / cover;*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    ;
+}
+
+.jumbotron:before {
+     position: absolute;
+     content: '';
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, .5);
+ }
+.main-container{
+    padding: 6% 0 6% 0;
+}
+.nav-link{
+    color: #000;
+}
+/* Footer */
+.footer {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    background: #492222;
+    color: white;
+}
+.card-row{
+    height: 10%;
+}
+.book-pic{
+    width:150px;
+    height:200px;
+    border-radius: 10%;
+}
+.book-pic-row{
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+.container{
+    text-align: center;
+}
+.avatar{
+    width: 100px;
+    height: 100px;
+}

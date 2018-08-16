@@ -24,9 +24,6 @@ class Navbar extends Component{
                                         <a class="nav-link" href="templates/login.html">Login</a>
                                     </li>
                                     <li class="nav-item">
-                                        <Link to="/signup">
-                                        <a class="nav-link" href="">Sign Up</a>
-                                        </Link>
                                     </li>
                                 </ul>
                             </div>
