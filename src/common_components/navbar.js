@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+import {Switch, Link, Route} from "react-router-dom"
 
 class Navbar extends Component{
     render(){
         return(
+            <BrowserRouter>
             <div className="container">
                 <header>
                     <div class="container">
@@ -30,6 +32,7 @@ class Navbar extends Component{
                     </div>
                 </header>
             </div>
+            </BrowserRouter>
         )
     }
 }

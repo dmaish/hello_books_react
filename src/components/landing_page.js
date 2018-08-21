@@ -17,7 +17,7 @@ class LandingPage extends Component{
                                 <p class="lead">Where we take you on the best tour of the literal pleasures of the century</p>
                                 <p class="lead">
                                     <Link to="./signup">
-                                    <a class="btn btn-primary btn-sm" href="templates/registration.html">Register</a>
+                                    <a class="btn btn-primary btn-sm" href="#">Register</a>
                                     </Link>
                                 </p>
                             </div>
