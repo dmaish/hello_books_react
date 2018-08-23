@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import {Router, Route} from "react-router-dom";
-import SignUp from "./components/signup";
+import {Router, Route} from 'react-router-dom';
+import SignUp from './components/signup';
 import './App.css';
-import history from "./utils/history";
-import LandingPage from './components/landing_page';
+import history from './utils/history';
+import LandingPage from './components/landingPage';
+import Signin from './components/signin'
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
           <div>
           <Route exact path="/" component={LandingPage}></Route>
           <Route path="/signup" component={SignUp}></Route>
+          <Route path="/signin" component={Signin}></Route>
           </div>
         </Router>
         

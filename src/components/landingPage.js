@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Navbar from "../common_components/navbar"
+import Navbar from "../commonComponents/navbar"
 import {Link} from "react-router-dom"
 import "../stylesheets.css"
 
@@ -16,9 +16,7 @@ class LandingPage extends Component{
                                 <h1 class="display-5">The Coolest Online Library</h1>
                                 <p class="lead">Where we take you on the best tour of the literal pleasures of the century</p>
                                 <p class="lead">
-                                    <Link to="./signup">
-                                    <a class="btn btn-primary btn-sm" href="#">Register</a>
-                                    </Link>
+                                    <Link to="./signup" className="btn btn-primary btn-sm">Register</Link>
                                 </p>
                             </div>
                         </div>

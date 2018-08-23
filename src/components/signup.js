@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import swal from 'sweetalert';
 
 class SignUp extends Component{
     constructor(props){
@@ -8,7 +9,6 @@ class SignUp extends Component{
                 username: "",
                 password: ""
         }
-        //TODO use arrow functions to refactor this
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -28,11 +28,14 @@ class SignUp extends Component{
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(this.state)
-        }).then(response => 
-            console.log("--->", response.json())
-        ).catch( error =>
-            console.log('error.....', error)
-        )
+        }).then(response => response.json())
+        .then(response =>{
+            swal(response.message)
+            if(response.message === "you registered successfully"){
+                window.location.replace('./signin')
+            }
+        })
+        
     }
     render(){
         const {email, username, password} = this.state;
@@ -50,6 +53,7 @@ class SignUp extends Component{
                                 type="email" 
                                 className="form-control " 
                                 placeholder="email"
+                                required
                                 />
                             </div>
                                 <div className="col-sm-2"></div>
@@ -65,6 +69,7 @@ class SignUp extends Component{
                                     type="text" 
                                     className="form-control " 
                                     placeholder="username"
+                                    required
                                     />
                             </div>
                             <div className="col-sm-2"></div>
