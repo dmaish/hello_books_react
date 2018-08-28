@@ -33,15 +33,17 @@ class SignIn extends Component{
             )
             .then(
                 response => {
-                console.log(response.message)
                 swal(response.message)
+                if (response.message === 'You logged in successfully'){
+                    localStorage.setItem('access_token', response.access_token)
+                }
                 })
     }
 
     render(){
         const {email, password} = this.state;
         return(
-            <div className = "container">
+            <div className = "container container-signin">
                     <form onSubmit={this.handleSubmit}>
                             <div className="form-group row">
                                 <div className="col-sm-2"></div>
@@ -74,7 +76,7 @@ class SignIn extends Component{
                                     required
                                     />
                                 </div>
-                                <div class="col-sm-2"></div>
+                                <div className="col-sm-2"></div>
                             </div>
                             <div className="form-group row">
                                 <div className="col-sm-4"></div>

@@ -5,9 +5,7 @@ import logo from "../assets/library.png"
 class Navbar extends Component{
     render(){
         return(
-            <div className="container">
-                <header>
-                    <div class="container">
+                    <div class="navBar">
                         <nav class="navbar navbar-light navbar-toggleable-sm">
                             <Link to="/" className="navbar-brand mb-0">
                                 <img src={logo} width="30" height="30" class="d-inline-block align-top" alt=""/>
@@ -28,8 +26,6 @@ class Navbar extends Component{
                             </div>
                         </nav>
                     </div>
-                </header>
-            </div>
         )
     }
 }

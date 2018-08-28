@@ -5,6 +5,7 @@ import './App.css';
 import history from './utils/history';
 import LandingPage from './components/landingPage';
 import Signin from './components/signin'
+import library from './components/libraryComponent'
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route exact path="/" component={LandingPage}></Route>
           <Route path="/signup" component={SignUp}></Route>
           <Route path="/signin" component={Signin}></Route>
+          <Route path="/library" component={library}></Route>
           </div>
         </Router>
         
