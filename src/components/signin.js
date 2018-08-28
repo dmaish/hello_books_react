@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import swal from 'sweetalert';
+import history from '../utils/history'
 
 class SignIn extends Component{
     constructor(props){
@@ -36,6 +37,7 @@ class SignIn extends Component{
                 swal(response.message)
                 if (response.message === 'You logged in successfully'){
                     localStorage.setItem('access_token', response.access_token)
+                    history.push('./profilePage')
                 }
                 })
     }
@@ -44,6 +46,11 @@ class SignIn extends Component{
         const {email, password} = this.state;
         return(
             <div className = "container container-signin">
+                <div className='card'>
+                    <div className='card-header'>
+                        <h5>signin</h5>
+                        </div>
+                    <div className='card-body'>
                     <form onSubmit={this.handleSubmit}>
                             <div className="form-group row">
                                 <div className="col-sm-2"></div>
@@ -86,6 +93,8 @@ class SignIn extends Component{
                                 <div className="col-sm-4"></div>
                             </div>
                     </form>
+                    </div>
+                    </div>
             </div>
         )
     }

@@ -6,6 +6,8 @@ import history from './utils/history';
 import LandingPage from './components/landingPage';
 import Signin from './components/signin'
 import library from './components/libraryComponent'
+import ProfilePage from './components/profilePage';
+import ResetPassword from './components/resetPassword';
 
 class App extends Component {
   render() {
@@ -17,6 +19,8 @@ class App extends Component {
           <Route path="/signup" component={SignUp}></Route>
           <Route path="/signin" component={Signin}></Route>
           <Route path="/library" component={library}></Route>
+          <Route path="/profilePage" component={ProfilePage}></Route>
+          <Route path="/resetPassword" component={ResetPassword}></Route>
           </div>
         </Router>
         
