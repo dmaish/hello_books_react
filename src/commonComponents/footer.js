@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 class Footer extends Component{
     render(){
         return(
-            <div className="container">
                     <footer class="footer">
                         <div class="container">
                             <ul class="list-inline mb-0 text-center">
@@ -14,7 +13,6 @@ class Footer extends Component{
                              </ul>
                          </div>
                     </footer>
-            </div>
         )
     }
 }
