@@ -7,8 +7,10 @@ class Library extends Component{
         this.state = {
         }
     }
-
+// propA = {True}
+// propB ={False}
 // fetch all books in the library
+   
     componentDidMount(){
         fetch("http://127.0.0.1:5000/api/books?page=1&per_page=10", {
             method: "GET",
@@ -23,6 +25,10 @@ class Library extends Component{
 
 // render the component
     render(){
+        // TODO THIS IS WHERE YOU PASS YOUR PROPS TO CHECK IF USER IS LOGGED IN
+        if(this.props){
+
+        }
         return(
            <div>
                <p>Books in the library.</p>

@@ -8,6 +8,7 @@ const row = (props) => {
         <td>{singleBook.book.author}</td>
         <td>{singleBook.book.title}</td>
         <td>{singleBook.book.category}</td>
+          isLoggedIn ? <td><button type="button" class="btn btn-info">Info</button></td> : 
     </tr>
     )
 }
