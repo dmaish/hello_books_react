@@ -13,7 +13,7 @@ class Library extends Component{
 // fetch all books in the library
    
     componentDidMount(){
-        fetch("http://127.0.0.1:5000/api/books?page=1&per_page=10", {
+        fetch("http://127.0.0.1:5000/api/books?page=1&per_page=15", {
             method: "GET",
             headers: {"Content-Type": "application/json"}
         }).then(

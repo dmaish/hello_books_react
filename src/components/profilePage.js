@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import avatar from '../assets/avatar.png'
 import {Link} from 'react-router-dom'
-import Signin from './signin'
 import Library from './libraryComponent'
 
 class ProfilePage extends Component{
