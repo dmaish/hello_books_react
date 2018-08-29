@@ -5,6 +5,7 @@ class Library extends Component{
     constructor(props){
         super(props);
         this.state = {
+            'loggedIn': false
         }
     }
 // propA = {True}
@@ -18,7 +19,7 @@ class Library extends Component{
         }).then(
             response => response.json()  
         ).then(books => {
-            this.setState({'books': books.books})
+            this.setState({'books': books.books, 'loggedIn': this.props.loggedIn})
         })
         
     }
@@ -26,13 +27,14 @@ class Library extends Component{
 // render the component
     render(){
         // TODO THIS IS WHERE YOU PASS YOUR PROPS TO CHECK IF USER IS LOGGED IN
-        if(this.props){
 
-        }
+        // if(this.props.loggedIn){
+        //     this.setState({'loggedIn': this.props.loggedIn})
+        // }
         return(
            <div>
                <p>Books in the library.</p>
-               <Books bookProp = {this.state.books}/>
+               <Books bookProp = {this.state.books} loggedIn = {this.state.loggedIn}/>
            </div>
         )   
     }
