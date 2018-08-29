@@ -6,8 +6,9 @@ import BookRow from './bookRow'
 const books = (props) => {
         
     const allBooks = props.bookProp
-    if (props.bookProp)return (
-            <table class="table table-striped table-bordered">
+    const loggedIn = props.loggedIn
+    if (allBooks)return (
+            <table className="table table-striped table-bordered">
                     <thead>
                         <tr>
                         <th scope="col">author</th>
@@ -16,8 +17,8 @@ const books = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                    {allBooks.map((book, index) => 
-                        <BookRow book = {book} index = {index}/>
+                    {allBooks.map((book, key) => 
+                        <BookRow book = {book} index = {key} loggedIn = {loggedIn}/>
                     )}
                     </tbody>
                 </table>

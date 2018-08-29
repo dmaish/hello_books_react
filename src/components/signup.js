@@ -43,6 +43,11 @@ class SignUp extends Component{
         const {email, username, password} = this.state;
         return(
             <div className = "container main-container" data-toggle="validator">
+                <div class="card">
+                    <div class="card-header">
+                    <h5>signup</h5>
+                    </div>
+                    <div className='card-body'>
                     <form onSubmit={this.handleSubmit}>
                             <div className="form-group row">
                                 <div className="col-sm-2"></div>
@@ -117,7 +122,9 @@ class SignUp extends Component{
                                 </div>
                                 <div className="col-sm-4"></div>
                             </div>
-                    </form>  
+                    </form> 
+                    </div>
+                    </div> 
             </div>
         )
     }
