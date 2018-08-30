@@ -8,8 +8,6 @@ class Library extends Component{
             'loggedIn': false
         }
     }
-// propA = {True}
-// propB ={False}
 // fetch all books in the library
    
     componentDidMount(){
@@ -27,10 +25,6 @@ class Library extends Component{
 // render the component
     render(){
         // TODO THIS IS WHERE YOU PASS YOUR PROPS TO CHECK IF USER IS LOGGED IN
-
-        // if(this.props.loggedIn){
-        //     this.setState({'loggedIn': this.props.loggedIn})
-        // }
         return(
            <div>
                <p>Books in the library.</p>
