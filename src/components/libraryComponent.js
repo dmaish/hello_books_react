@@ -31,6 +31,7 @@ class Library extends Component{
         // if(this.props.loggedIn){
         //     this.setState({'loggedIn': this.props.loggedIn})
         // }
+        console.log("state being sent as props", this.state.books)
         return(
            <div>
                <p>Books in the library.</p>

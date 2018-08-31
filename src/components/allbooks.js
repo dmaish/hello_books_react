@@ -14,8 +14,8 @@ class Books extends Component{
     }
      
     componentDidMount(){
-        // this.setState({"allbooks": props.bookProp, "loggedIn": this.props.loggedIn})
-        // console.log("fucking props", props.bookProp)
+        this.setState({"allbooks": this.props.bookProp, "loggedIn": this.props.loggedIn})
+        console.log("fucking props", this.props.bookProp)
     }
 
     render(){
