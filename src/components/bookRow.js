@@ -29,7 +29,7 @@ const row = (props) => {
         {console.log(singleBook.borrowed_flag)}
           { props.loggedIn === true 
           ? 
-          singleBook.book.borrowed_flag === true ? "not vailable" :
+          singleBook.book.borrowed_flag === true ? "unavailable" :
           <td><button type="button" onClick= { borrowFunction } className="btn btn-info">borrow</button></td> : null }
     </tr>
     )
