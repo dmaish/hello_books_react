@@ -29,6 +29,8 @@ class BorrowHistory extends Component{
                             <th scope="col">author</th>
                             <th scope="col">title</th>
                             <th scope="col">category</th>
+                            <th scope="col">time borrowed</th>
+                            <th scope="col">return time</th>
                             </tr>
                         </thead>
                         <tbody>

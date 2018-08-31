@@ -19,11 +19,13 @@ render(){
         <td>{singleBook.author}</td>
         <td>{singleBook.category}</td>
         <td>{singleBook.time_borrowed}</td>
-        <td>{singleBook.return_flag}</td>
+         {singleBook.return_flag ? <td>{singleBook.return_flag}</td>
+        : <td><p>not returned</p></td>}
+        {/*  */}
         </tr>
         
     )
-    return(<tr><td>no rows</td>
+    return(<tr><td>connection</td>
         </tr>)
 }
 }
