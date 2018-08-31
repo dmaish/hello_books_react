@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import avatar from '../assets/avatar.png'
 import {Link} from 'react-router-dom'
 import Library from './libraryComponent'
+import UserHistory from './userHistory'
 
 class ProfilePage extends Component{
     constructor(props){
@@ -36,7 +37,7 @@ class ProfilePage extends Component{
                         <div className="tab-content" id="myTabContent">
                         <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><Library loggedIn = {true}/></div>
                         <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-                        <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                        <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><UserHistory/></div>
                         </div>
                 
                 </div>
