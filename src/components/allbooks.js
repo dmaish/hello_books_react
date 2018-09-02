@@ -7,22 +7,22 @@ class Books extends Component{
     constructor(props){
         super(props);
         this.state = {
-            "allbooks": this.props.allbooks,
-            "loggedIn": this.props.loggedIn
 
         }
     }
      
     componentDidMount(){
-        this.setState({"allbooks": this.props.bookProp, "loggedIn": this.props.loggedIn})
-        console.log("fucking props", this.props.bookProp)
+        this.setState({"allbooks": this.props.booksProp, "loggedIn": this.props.loggedIn})
+        
     }
 
     render(){
         // console.log("fucking state", this.state.allbooks)
-        const allBooks = this.state.allbooks
-        const loggedIn = this.state.loggedIn
-        if (allBooks)return (
+        
+        const {allbooks} = this.state
+        const {loggedIn} = this.state
+        console.log('the prop is received as:', allbooks)
+        if (allbooks)return (
                 <table className="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -32,7 +32,7 @@ class Books extends Component{
                             </tr>
                         </thead>
                         <tbody>
-                        {allBooks.map((book, key) => 
+                        {allbooks.map((book, key) => 
                             <BookRow book = {book} index = {key} loggedIn = {loggedIn}/>
                         )}
                         </tbody>

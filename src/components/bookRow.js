@@ -1,13 +1,26 @@
-import React from 'react';
+import React, {Component} from 'react';
 import swal from 'sweetalert';
 
-// function based child component containing one book record(row)
 // should the user be loggenIn, the borrow button will be displayed, and functionality executed when clicked
-const row = (props) => {
-    const singleBook = props
+class BookRow extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+
+        }
+        // bind the function
+        this.borrowFunction = this.borrowFunction.bind(this)
+    }
+    // update the state using props received
+    componentDidMount(){
+        this.setState({"book": this.props.book})
+        this.setState({"loggedIn": this.props.loggedIn})
+    }
+    
 
     // handle borrowing logic when borrow button is clicked
-    function borrowFunction(){
+    borrowFunction(){
+        const {singleBook} = this.state
         const jwt_token = localStorage.getItem('access_token')
         fetch(`http://127.0.0.1:5000/api/users/books/${singleBook.book.id}`,{
             method: "POST",
@@ -15,24 +28,31 @@ const row = (props) => {
                         'Authorization': `Bearer ${jwt_token}`}
         }).then(response => response.json())
         .then(response =>{
-            console.log(response.message)
             swal(response.message)
         }
         )
     }
 
-    return(
-    <tr>
-        <td>{singleBook.book.author}</td>
-        <td>{singleBook.book.title}</td>
-        <td>{singleBook.book.category}</td>
-        {console.log(singleBook.borrowed_flag)}
-          { props.loggedIn === true 
-          ? 
-          singleBook.book.borrowed_flag === true ? "unavailable" :
-          <td><button type="button" onClick= { borrowFunction } className="btn btn-info">borrow</button></td> : null }
-    </tr>
-    )
+    render(){
+        const {book} = this.state
+        const {loggedIn} = this.state
+        console.log("state of the single bookish", book)
+        if(book)return(
+        <tr>
+            <td>{book.author}</td>
+            <td>{book.title}</td>
+            <td>{book.category}</td>
+            {console.log(book.borrowed_flag)}
+            {loggedIn === true 
+            ? 
+            book.borrowed_flag === true ? "unavailable" :
+            <td><button type="button" onClick= { this.borrowFunction } className="btn btn-info">borrow</button></td> : null }
+        </tr>
+        )
+        return(
+            <p>check your connections</p>
+        )
+    }
 }
 
-export default row;
+export default BookRow;
