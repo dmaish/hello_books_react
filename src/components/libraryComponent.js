@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Books from './allbooks'
+import AllBooks from './allbooks'
 
 class Library extends Component{
     constructor(props){
@@ -24,13 +24,15 @@ class Library extends Component{
 
 // render the component
     render(){
-        // TODO THIS IS WHERE YOU PASS YOUR PROPS TO CHECK IF USER IS LOGGED IN
-        return(
+        const {books} = this.state
+        if(books)return(
            <div>
                <p>Books in the library.</p>
-               <Books bookProp = {this.state.books} loggedIn = {this.state.loggedIn}/>
+               <AllBooks booksProp = {books} loggedIn = {this.state.loggedIn}/>
+               {console.log('state being sent as props', books)}
            </div>
-        )   
+        )
+        return(<div>check you connections </div>)
     }
 }
 
