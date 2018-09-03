@@ -28,7 +28,9 @@ class BookRow extends Component{
                         'Authorization': `Bearer ${jwt_token}`}
         }).then(response => response.json())
         .then(response =>{
-            swal(response.message)
+            // swal(response.message)
+            swal(book.title, response.message, "success");
+
         }
         )
     }
