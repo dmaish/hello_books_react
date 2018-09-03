@@ -5,22 +5,22 @@ import logo from "../assets/library.png"
 class Navbar extends Component{
     render(){
         return(
-                    <div class="navBar">
-                        <nav class="navbar navbar-light navbar-toggleable-sm">
+                    <div className="navBar">
+                        <nav className="navbar navbar-light navbar-toggleable-sm">
                             <Link to="/" className="navbar-brand mb-0">
-                                <img src={logo} width="30" height="30" class="d-inline-block align-top" alt=""/>
+                                <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>
                                 hello_books </Link>
 
-                            <div  class=" justify-content-end">
-                                <ul class="nav">
+                            <div  className=" justify-content-end">
+                                <ul className="nav">
                                     <li className="nav-item">
                                         <Link to="/library" className="nav-link" >library</Link>
                                     </li>
-                                    <li class="nav-item">
+                                    <li className="nav-item">
                                         <Link to="/borrow" className="nav-link" >borrow</Link>
                                     </li>
-                                    <li class="nav-item">
-                                        <Link to="/signin" className="nav-link" ><button type="button" class="btn btn-outline-primary btn-sm">sign in</button></Link>
+                                    <li className="nav-item">
+                                        <Link to="/signin" className="nav-link" ><button type="button" className="btn btn-outline-primary btn-sm">sign in</button></Link>
                                     </li>
                                 </ul>
                             </div>

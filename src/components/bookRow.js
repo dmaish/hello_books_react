@@ -20,9 +20,9 @@ class BookRow extends Component{
 
     // handle borrowing logic when borrow button is clicked
     borrowFunction(){
-        const {singleBook} = this.state
+        const {book} = this.state
         const jwt_token = localStorage.getItem('access_token')
-        fetch(`http://127.0.0.1:5000/api/users/books/${singleBook.book.id}`,{
+        fetch(`http://127.0.0.1:5000/api/users/books/${book.id}`,{
             method: "POST",
             headers: {"Content-Type": "application/json",
                         'Authorization': `Bearer ${jwt_token}`}
@@ -36,13 +36,11 @@ class BookRow extends Component{
     render(){
         const {book} = this.state
         const {loggedIn} = this.state
-        console.log("state of the single bookish", book)
         if(book)return(
         <tr>
             <td>{book.author}</td>
             <td>{book.title}</td>
             <td>{book.category}</td>
-            {console.log(book.borrowed_flag)}
             {loggedIn === true 
             ? 
             book.borrowed_flag === true ? "unavailable" :

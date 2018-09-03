@@ -30,7 +30,7 @@ class BorrowHistory extends Component{
                             <th scope="col">title</th>
                             <th scope="col">category</th>
                             <th scope="col">time borrowed</th>
-                            <th scope="col">return time</th>
+                            <th scope="col">status</th>
                             </tr>
                         </thead>
                         <tbody>

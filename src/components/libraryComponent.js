@@ -8,8 +8,6 @@ class Library extends Component{
             'loggedIn': false
         }
     }
-// propA = {True}
-// propB ={False}
 // fetch all books in the library
    
     componentDidMount(){
@@ -31,7 +29,6 @@ class Library extends Component{
            <div>
                <p>Books in the library.</p>
                <AllBooks booksProp = {books} loggedIn = {this.state.loggedIn}/>
-               {console.log('state being sent as props', books)}
            </div>
         )
         return(<div>check you connections </div>)
