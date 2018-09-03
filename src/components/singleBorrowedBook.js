@@ -19,14 +19,14 @@ class singleBook extends Component {
     // handle borrowing logic when borrow button is clicked
     returnBook(){
         const jwt_token = localStorage.getItem('access_token')
-        const bookId = this.state.singleBook.id
-        fetch(`http://127.0.0.1:5000/api/users/books/${bookId}`,{
+        const book = this.state.singleBook
+        fetch(`http://127.0.0.1:5000/api/users/books/${book.id}`,{
             method: "PUT",
             headers: {"Content-Type": "application/json",
                         'Authorization': `Bearer ${jwt_token}`}
         }).then(response => response.json())
         .then(response =>{
-            swal(response.message)
+            swal(book.title, response.message, "info");
         }
         )
     }
