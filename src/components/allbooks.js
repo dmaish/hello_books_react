@@ -21,7 +21,6 @@ class Books extends Component{
         
         const {allbooks} = this.state
         const {loggedIn} = this.state
-        console.log('the prop is received as:', allbooks)
         if (allbooks)return (
                 <table className="table table-striped table-bordered">
                         <thead>

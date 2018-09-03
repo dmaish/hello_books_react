@@ -11,7 +11,6 @@ class HistoryRecord extends Component{
         this.setState({"singleBook":this.props.singleBook})
     }
 render(){
-    console.log("is this empty?",this.state.singleBook)
     const singleBook = this.state.singleBook
       if(singleBook)return(
         <tr>
@@ -21,7 +20,6 @@ render(){
         <td>{singleBook.time_borrowed}</td>
          {singleBook.return_flag ? <td>{singleBook.return_flag}</td>
         : <td><p>not returned</p></td>}
-        {/*  */}
         </tr>
         
     )
