@@ -39,6 +39,18 @@ class SignUp extends Component{
         })
         
     }
+
+    // method to reveal user password
+    revealPassword = () => {
+        var x = document.getElementById("passwordField");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+    
+
     render(){
         const {email, username, password} = this.state;
         return(
@@ -87,6 +99,7 @@ class SignUp extends Component{
                                 <div className="col-sm-6 ">
                                     <input 
                                     name="password"
+                                    id="passwordField"
                                     value={password}
                                     onChange= {this.handleChange}
                                     type="password" 
@@ -96,25 +109,12 @@ class SignUp extends Component{
                                     required
                                     />
                                 </div>
-                                <div className="col-sm-2"></div>
                             </div>
-
                             <div className="form-group row">
-                                <div className="col-sm-2"></div>
-                                <label className="col-sm-2 col-form-label ">confirm password</label>
-                                <div className="col-sm-6 ">
-                                    <input 
-                                    name="password"
-                                    type="password" 
-                                    className="form-control " 
-                                    placeholder="confirm password"
-                                    data-minlength="8"
-                                    required
-                                    />
+                                <div className="col-sm-4"></div>
+                                <div className="col-sm-4"><input type="checkbox" onClick={this.revealPassword}/> show password</div>
+                                <div className="col-sm-4"></div>
                             </div>
-                            <div className="col-sm-2"></div>
-                            </div>
-
                             <div className="form-group row">
                                 <div className="col-sm-4"></div>
                                 <div className="col-sm-4">

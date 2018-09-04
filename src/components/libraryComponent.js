@@ -9,8 +9,13 @@ class Library extends Component{
         }
     }
 // fetch all books in the library
-   
+
     componentDidMount(){
+        console.log("My books Mounting");
+        this.getBooks();
+    }
+   
+    getBooks=()=>{
         fetch("http://127.0.0.1:5000/api/books?page=1&per_page=15", {
             method: "GET",
             headers: {"Content-Type": "application/json"}
@@ -19,8 +24,9 @@ class Library extends Component{
         ).then(books => {
             this.setState({'books': books.books, 'loggedIn': this.props.loggedIn})
         })
-        
+
     }
+    
 
 // render the component
     render(){

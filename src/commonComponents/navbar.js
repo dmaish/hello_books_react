@@ -17,9 +17,6 @@ class Navbar extends Component{
                                         <Link to="/library" className="nav-link" >library</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link to="/borrow" className="nav-link" >borrow</Link>
-                                    </li>
-                                    <li className="nav-item">
                                         <Link to="/signin" className="nav-link" ><button type="button" className="btn btn-outline-primary btn-sm">sign in</button></Link>
                                     </li>
                                 </ul>
