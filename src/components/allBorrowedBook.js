@@ -14,6 +14,16 @@ class singleBook extends Component{
         this.setState({"allBooks":this.props.allBooks})
     }
 
+     // function to update allBorrowedBooks state
+     changeState = (someBook) => {
+        if(someBook)
+        this.setState(currentState => (
+            {
+          "allBooks": currentState.allBooks.filter(book => book.id !== someBook.id)
+        })
+        )
+    }
+
     render(){
         const allBooks = this.props.allBooks
         console.log("lslsl", this.props.allBooks)
@@ -24,7 +34,7 @@ class singleBook extends Component{
                         <tbody>
                             { console.log('allBorrowedBook', allBooks)}
                         {allBooks.map((book) => 
-                            <SingleBorrowedBook book = {book} />
+                            <SingleBorrowedBook book = {book} changeState={this.changeState}/>
                             
                         )}
                         </tbody>

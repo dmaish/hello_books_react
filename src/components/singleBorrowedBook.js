@@ -20,6 +20,7 @@ class singleBook extends Component {
     returnBook(){
         const jwt_token = localStorage.getItem('access_token')
         const book = this.state.singleBook
+
         fetch(`http://127.0.0.1:5000/api/users/books/${book.id}`,{
             method: "PUT",
             headers: {"Content-Type": "application/json",
@@ -28,7 +29,7 @@ class singleBook extends Component {
         .then(response =>{
             swal(book.title, response.message, "info");
         }
-        )
+        ).then(() => this.props.changeState(book))
     }
 
     render(){
