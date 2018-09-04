@@ -12,6 +12,12 @@ class returnBorrowed extends Component{
     
 // fetch all the books
     componentDidMount(){
+        console.log("Mounting")
+        this.getBorrowedBooks()
+
+    }
+
+    getBorrowedBooks = ()=> {
         const jwt_token = localStorage.getItem('access_token')
         fetch("http://127.0.0.1:5000/api/users/books?returned=false", {
             method: "GET",
@@ -19,13 +25,16 @@ class returnBorrowed extends Component{
             'Authorization': `Bearer ${jwt_token}`}
         }).then(
             response => response.json()  
+            
         ).then(books => {
             this.setState({'books': books.unreturned_books})
         })
     }
+    
 
     render() {
         const allBooks = this.state.books
+        console.log("zam", allBooks)
         return (
              <AllBorrowedBooks allBooks={allBooks}/>
         );

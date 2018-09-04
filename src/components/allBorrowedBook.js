@@ -16,6 +16,7 @@ class singleBook extends Component{
 
     render(){
         const allBooks = this.props.allBooks
+        console.log("lslsl", this.props.allBooks)
         if (allBooks)return (
             <table className="table table-striped table-bordered">
                         <thead>
