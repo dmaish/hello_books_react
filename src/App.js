@@ -8,6 +8,7 @@ import Signin from './components/signin'
 import library from './components/libraryComponent'
 import ProfilePage from './components/profilePage';
 import ResetPassword from './components/resetPassword';
+import bookAdd from './adminComponents/bookAdd'
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route path="/library" component={library}></Route>
           <Route path="/profilePage" component={ProfilePage}></Route>
           <Route path="/resetPassword" component={ResetPassword}></Route>
+          <Route path="/bookAdd" component={bookAdd}></Route>
           </div>
         </Router>
         
