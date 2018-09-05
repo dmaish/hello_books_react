@@ -9,9 +9,7 @@ class Library extends Component{
         }
     }
 // fetch all books in the library
-
     componentDidMount(){
-        console.log("My books Mounting");
         this.getBooks();
     }
    
@@ -27,14 +25,13 @@ class Library extends Component{
 
     }
     
-
 // render the component
     render(){
         const {books} = this.state
         if(books)return(
            <div>
                <p>Books in the library.</p>
-               <AllBooks booksProp = {books} loggedIn = {this.state.loggedIn}/>
+               <AllBooks booksProp = {books} loggedIn = {this.state.loggedIn} getBooks={this.getBooks}/>
            </div>
         )
         return(<div>check you connections </div>)

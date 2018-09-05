@@ -26,15 +26,13 @@ class singleBook extends Component{
 
     render(){
         const allBooks = this.props.allBooks
-        console.log("lslsl", this.props.allBooks)
         if (allBooks)return (
             <table className="table table-striped table-bordered">
                         <thead>
                         </thead>
                         <tbody>
-                            { console.log('allBorrowedBook', allBooks)}
                         {allBooks.map((book) => 
-                            <SingleBorrowedBook book = {book} changeState={this.changeState}/>
+                            <SingleBorrowedBook book = {book} changeState={this.changeState} getBorrowedBooks={this.props.getBorrowedBooks}/>
                             
                         )}
                         </tbody>

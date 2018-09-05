@@ -34,9 +34,8 @@ class returnBorrowed extends Component{
 
     render() {
         const allBooks = this.state.books
-        console.log("zam", allBooks)
         return (
-             <AllBorrowedBooks allBooks={allBooks}/>
+             <AllBorrowedBooks allBooks={allBooks} getBorrowedBooks={this.getBorrowedBooks}/>
         );
     }
 

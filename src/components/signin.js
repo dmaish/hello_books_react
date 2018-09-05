@@ -37,7 +37,7 @@ class SignIn extends Component{
                 swal(response.message)
                 if (response.message === 'You logged in successfully' && response.is_admin){
                     localStorage.setItem('access_token', response.access_token)
-                    history.push('./bookAdd')
+                    history.push('./adminDashboard')
                 }
                 else if(response.message){
                     localStorage.setItem('access_token', response.access_token)
