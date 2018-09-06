@@ -25,8 +25,9 @@ class dashboard extends Component{
         this.getAllBooks();
     }
    
-    getAllBooks= () => {
-        fetch("http://127.0.0.1:5000/api/books?page=1&per_page=15", {
+    // getting all books from the API
+    getAllBooks = () => {
+        fetch("http://127.0.0.1:5000/api/books?page=1&per_page=60", {
             method: "GET",
             headers: {"Content-Type": "application/json"}
         }).then(
@@ -42,7 +43,8 @@ class dashboard extends Component{
         const {allbooks} = this.state
         if(allbooks)return(
             <div className='container'>
-                <Modal show={this.state.show} handleClose={this.hideModal}/>
+                {/* NOTE: JUST NOT PASS THE 'GETBOOKS' METHOD TO SEE IF THIS COMPONENT WILL FETCH ALL BOOKS BASES ON THE STATE CHENGE CAUSED BY THE MODAL METHODS  */}
+                <Modal show={this.state.show} handleClose={this.hideModal} getAllBooks={this.getAllBooks}/>
                 <CardBody>
                 <CardTitle>the admin dashboard</CardTitle>
                 <span className="card-subtitle"></span>

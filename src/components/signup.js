@@ -42,11 +42,11 @@ class SignUp extends Component{
 
     // method to reveal user password
     revealPassword = () => {
-        var x = document.getElementById("passwordField");
-        if (x.type === "password") {
-            x.type = "text";
+        const passwordField = document.getElementById("passwordField");
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
         } else {
-            x.type = "password";
+            passwordField.type = "password";
         }
     }
     
