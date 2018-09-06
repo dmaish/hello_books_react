@@ -1,15 +1,41 @@
 import React, { Component } from 'react';
+import swal from 'sweetalert';
 
 class singleBookRow extends Component{
     constructor(props){
         super(props)
         this.state = {
-
         }
     }
     componentDidMount(){
         this.setState({"book": this.props.book})
     }
+
+    bookDeleteAlert = () => {
+        const {book} = this.state
+        swal({
+            title: "Are you sure...",
+            text: `you want to delete "${book.title}""`,
+            icon: "warning",
+            buttons: {
+                    cancel: "Cancel",
+                    okay: true,
+            }
+          })
+          .then((value) => {
+            switch (value) {
+                case "cancel":
+                  swal("cancelled");
+                  break;
+                case "okay":
+                    this.deleteBook()
+                    break;
+                default:
+                  break;
+              }
+          });
+    }
+    
     // method to delete book
     deleteBook = () => {
         const {book} = this.state
@@ -19,9 +45,10 @@ class singleBookRow extends Component{
             headers: {"Content-Type": "application/json",
                         'Authorization': `Bearer ${jwt_token}`}
         }).then(
-            response => {response.json()
-            console.log('message', response.message)}  
-        ).then(this.props.getAllBooks())
+            response => response.json()  
+        ).then(response => {
+            swal("", response.message, "info")
+        })
     }
 
     render(){
@@ -34,7 +61,7 @@ class singleBookRow extends Component{
             <td>{book.category}</td>
             <td>
             <button type="button" className="btn"><i class="fas fa-edit"></i></button>
-            <button type="button" className="btn" onClick={this.deleteBook}><i class="fas fa-trash"></i></button>
+            <button type="button" className="btn" onClick={this.bookDeleteAlert}><i class="fas fa-trash"></i></button>
             
             </td>
             </tr>

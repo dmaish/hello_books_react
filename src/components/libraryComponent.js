@@ -14,7 +14,7 @@ class Library extends Component{
     }
    
     getBooks=()=>{
-        fetch("http://127.0.0.1:5000/api/books?page=1&per_page=15", {
+        fetch("http://127.0.0.1:5000/api/books?page=1&per_page=60", {
             method: "GET",
             headers: {"Content-Type": "application/json"}
         }).then(

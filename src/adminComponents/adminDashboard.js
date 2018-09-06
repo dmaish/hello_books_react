@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import SingleBookRow from './singleRow';
 import {CardBody, CardTitle} from 'reactstrap';
 import Modal from './addModal';
+import swal from 'sweetalert';
+import history from '../utils/history'
 
 class dashboard extends Component{
     constructor(props){
@@ -38,13 +40,60 @@ class dashboard extends Component{
 
     }
 
+    // TODO this code is repeated in the logout for normal user..change
+    // LOGOUT
+     //function to handle user logging out
+     logoutAlert = () => {
+        swal({
+            title: "Are you sure...",
+            text: "you want to log out?",
+            icon: "warning",
+            buttons: {
+                    cancel: "Cancel",
+                    okay: true,
+            }
+          })
+          .then((value) => {
+            switch (value) {
+                case "cancel":
+                  swal("cancelled");
+                  break;
+                case "okay":
+                    this.actualLogout()
+                    swal("logout", "was a success!", "success");
+                    break;
+                default:
+                  break;
+              }
+          });
+    }
+    // actual logout call to api
+    actualLogout = () => {
+        const jwt_token = localStorage.getItem('access_token')
+        fetch("http://127.0.0.1:5000/api/auth/logout",{
+            method: "POST",
+            headers: {"Content-Type": "application/json",
+                        'Authorization': `Bearer ${jwt_token}`},
+            body: JSON.stringify(this.state)
+        }).then(response => response.json())
+        .then(response => {
+            swal(response.message)
+            history.push('/')
+        })
+    }
+
     // render the component
     render(){
         const {allbooks} = this.state
         if(allbooks)return(
             <div className='container'>
                 {/* NOTE: JUST NOT PASS THE 'GETBOOKS' METHOD TO SEE IF THIS COMPONENT WILL FETCH ALL BOOKS BASES ON THE STATE CHENGE CAUSED BY THE MODAL METHODS  */}
-                <Modal show={this.state.show} handleClose={this.hideModal} getAllBooks={this.getAllBooks}/>
+                <Modal show={this.state.show} handleClose={this.hideModal} forceUpdate={this.updateDashboard}/>
+                <div className="row">
+                <div class="col col-lg-2"><button className="btn btn-info" onClick={this.logoutAlert}>logout</button></div>
+                <div class="col col-lg-5"></div>
+                <div class="col col-lg-5"></div>
+                </div>
                 <CardBody>
                 <CardTitle>the admin dashboard</CardTitle>
                 <span className="card-subtitle"></span>

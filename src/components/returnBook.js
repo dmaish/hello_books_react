@@ -14,7 +14,6 @@ class returnBorrowed extends Component{
     componentDidMount(){
         console.log("Mounting")
         this.getBorrowedBooks()
-
     }
 
     getBorrowedBooks = ()=> {
