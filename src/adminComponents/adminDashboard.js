@@ -88,7 +88,7 @@ class dashboard extends Component{
         if(allbooks)return(
             <div className='container'>
                 {/* NOTE: JUST NOT PASS THE 'GETBOOKS' METHOD TO SEE IF THIS COMPONENT WILL FETCH ALL BOOKS BASES ON THE STATE CHENGE CAUSED BY THE MODAL METHODS  */}
-                <Modal show={this.state.show} handleClose={this.hideModal} forceUpdate={this.updateDashboard}/>
+                <Modal show={this.state.show} handleClose={this.hideModal} getAllBooks={this.getAllBooks}/>
                 <div className="row">
                 <div class="col col-lg-2"><button className="btn btn-info" onClick={this.logoutAlert}>logout</button></div>
                 <div class="col col-lg-5"></div>

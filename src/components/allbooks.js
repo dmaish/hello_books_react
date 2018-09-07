@@ -12,12 +12,11 @@ class Books extends Component{
     }
      
     componentDidMount(){
-        this.setState({"allbooks": this.props.booksProp, "loggedIn": this.props.loggedIn})
-        
+        this.setState({"allbooks": this.props.booksProp, "loggedIn": this.props.loggedIn})    
     }
 
     render(){
-        // console.log("fucking state", this.state.allbooks)
+        console.log("fucking props in all books", this.props)
         
         const {allbooks} = this.state
         const {loggedIn} = this.state
@@ -35,7 +34,7 @@ class Books extends Component{
                         </thead>
                         <tbody>
                         {allbooks.map((book) => 
-                            <BookRow book = {book} key = {book.id} loggedIn = {loggedIn} getBooks={this.props.getBooks}/>
+                            <BookRow book = {book} key = {book.id} loggedIn = {loggedIn} reGetBooks={this.props.reGetBooks}/>
                         )}
                         </tbody>
                     </table>

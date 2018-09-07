@@ -8,11 +8,8 @@ class returnBorrowed extends Component{
 
         }
     }
-
-    
 // fetch all the books
     componentDidMount(){
-        console.log("Mounting")
         this.getBorrowedBooks()
     }
 
@@ -30,7 +27,6 @@ class returnBorrowed extends Component{
         })
     }
     
-
     render() {
         const allBooks = this.state.books
         return (

@@ -29,12 +29,15 @@ class BookRow extends Component{
             // swal(response.message)
             swal(book.title, response.message, "success");
         }
-        ).then(this.setState({"borrowedStatus": true}))
+        ).then(() => this.setState({"borrowedStatus": true})
+        ).then(() => this.props.reGetBooks())
     }
 
     render(){
         const {book} = this.state
         const {loggedIn} = this.state
+        const {borrowedStatus} = this.state
+        console.log("fucking props in borrowing", this.props)
         if(book)return(
         <tr>
             <td>{book.id}</td>
@@ -43,8 +46,11 @@ class BookRow extends Component{
             <td>{book.category}</td>
             {loggedIn === true 
             ? 
-            book.borrowed_flag === true ? "unavailable" :
-            <td><button type="button" onClick= { this.borrowFunction } className="btn btn-info">borrow</button></td> : null }
+            book.borrowed_flag ?
+            null
+            :
+            borrowedStatus ? null :
+            <td><button type="button" onClick= {this.borrowFunction} className="btn btn-info">borrow</button></td> : null }
         </tr>
         )
         return(

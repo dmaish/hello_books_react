@@ -31,7 +31,7 @@ class Library extends Component{
         if(books)return(
            <div>
                <p>Books in the library.</p>
-               <AllBooks booksProp = {books} loggedIn = {this.state.loggedIn} getBooks={this.getBooks}/>
+               <AllBooks booksProp = {books} loggedIn = {this.state.loggedIn} reGetBooks={this.getBooks}/>
            </div>
         )
         return(<div>check you connections </div>)

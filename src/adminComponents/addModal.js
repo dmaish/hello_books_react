@@ -32,8 +32,9 @@ class Modal extends Component{
         body: JSON.stringify(this.state)
     }).then(response => response.json())
     .then(response => console.log(response.message))
-    .then(this.props.forceUpdate())
-    .then(this.props.handleClose())
+    .then(() => {this.props.getAllBooks()
+            this.closeModal()
+          })
     }
 
 
