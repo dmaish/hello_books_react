@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`My signIn component should render correctly in "debug" mode 1`] = `
+<div
+  className="container container-signin"
+>
+  <div
+    className="card"
+  >
+    <div
+      className="card-header"
+    >
+      <h5>
+        signin
+      </h5>
+    </div>
+    <div
+      className="card-body"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div
+          className="form-group row"
+        >
+          <div
+            className="col-sm-2"
+          />
+          <label
+            className="col-sm-2 col-form-label "
+          >
+            email
+          </label>
+          <div
+            className="col-sm-6 "
+          >
+            <input
+              className="form-control "
+              name="email"
+              onChange={[Function]}
+              placeholder="email"
+              required={true}
+              type="email"
+              value=""
+            />
+          </div>
+          <div
+            className="col-sm-2"
+          />
+        </div>
+        <div
+          className="form-group row"
+        >
+          <div
+            className="col-sm-2"
+          />
+          <label
+            className="col-sm-2 col-form-label "
+          >
+            password
+          </label>
+          <div
+            className="col-sm-6 "
+          >
+            <input
+              className="form-control "
+              data-minlength="8"
+              name="password"
+              onChange={[Function]}
+              placeholder="password"
+              required={true}
+              type="password"
+              value=""
+            />
+          </div>
+          <div
+            className="col-sm-2"
+          />
+        </div>
+        <div
+          className="form-group row"
+        >
+          <div
+            className="col-sm-4"
+          />
+          <div
+            className="col-sm-4"
+          >
+            <button
+              className="btn btn-primary"
+              type="submit"
+            >
+              submit
+            </button>
+          </div>
+          <div
+            className="col-sm-4"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
