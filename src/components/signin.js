@@ -55,13 +55,14 @@ class SignIn extends Component{
                         <h5>signin</h5>
                         </div>
                     <div className='card-body'>
-                    <form onSubmit={this.handleSubmit}>
+                    <form className='signInForm' onSubmit={this.handleSubmit}>
                             <div className="form-group row">
                                 <div className="col-sm-2"></div>
                                 <label className="col-sm-2 col-form-label ">email</label>
                                 <div className="col-sm-6 ">
                                 <input 
                                 name= "email"
+                                name='loginEmail'
                                 value={email}
                                 onChange={this.handleChange}
                                 type="email" 
@@ -78,6 +79,7 @@ class SignIn extends Component{
                                 <div className="col-sm-6 ">
                                 <input 
                                     name="password"
+                                    id='loginPassword'
                                     value={password}
                                     onChange= {this.handleChange}
                                     type="password" 

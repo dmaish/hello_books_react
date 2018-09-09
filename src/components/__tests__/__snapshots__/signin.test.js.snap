@@ -18,6 +18,7 @@ exports[`My signIn component should render correctly in "debug" mode 1`] = `
       className="card-body"
     >
       <form
+        className="signInForm"
         onSubmit={[Function]}
       >
         <div
