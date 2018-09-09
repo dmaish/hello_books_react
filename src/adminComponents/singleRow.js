@@ -54,7 +54,7 @@ class singleBookRow extends Component{
     render(){
         const {book} = this.state
         if(book)return(
-            <tr>
+            <tr id='bookRow'>
             <td>{book.id}</td>
             <td>{book.author}</td>
             <td>{book.title}</td>

@@ -94,8 +94,8 @@ class dashboard extends Component{
                 <div class="col col-lg-5"></div>
                 <div class="col col-lg-5"></div>
                 </div>
-                <CardBody>
-                <CardTitle>the admin dashboard</CardTitle>
+                <CardBody id='card'>
+                <CardTitle >the admin dashboard</CardTitle>
                 <span className="card-subtitle"></span>
                 <button className="btn btn-outline-info bt-sm" onClick={this.showModal}>add new book <i class="fas fa-plus"></i></button>
                                     <table className="table  table-bordered table-sm">

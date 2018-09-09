@@ -37,6 +37,7 @@ exports[`My signIn component should render correctly in "debug" mode 1`] = `
           >
             <input
               className="form-control "
+              id="loginEmail"
               name="email"
               onChange={[Function]}
               placeholder="email"
@@ -66,6 +67,7 @@ exports[`My signIn component should render correctly in "debug" mode 1`] = `
             <input
               className="form-control "
               data-minlength="8"
+              id="loginPassword"
               name="password"
               onChange={[Function]}
               placeholder="password"

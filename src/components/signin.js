@@ -62,7 +62,7 @@ class SignIn extends Component{
                                 <div className="col-sm-6 ">
                                 <input 
                                 name= "email"
-                                name='loginEmail'
+                                id="loginEmail"
                                 value={email}
                                 onChange={this.handleChange}
                                 type="email" 
