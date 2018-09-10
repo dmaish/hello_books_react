@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import swal from 'sweetalert';
+import {Link} from 'react-router-dom';
 
 class singleBookRow extends Component{
     constructor(props){
@@ -35,6 +36,7 @@ class singleBookRow extends Component{
               }
           });
     }
+
     
     // method to delete book
     deleteBook = () => {
@@ -49,20 +51,24 @@ class singleBookRow extends Component{
         ).then(response => {
             swal("", response.message, "info")
         })
+        .then(this.props.removeBook(this.state.book))
     }
 
     render(){
         const {book} = this.state
         if(book)return(
             <tr id='bookRow'>
-            <td>{book.id}</td>
             <td>{book.author}</td>
             <td>{book.title}</td>
             <td>{book.category}</td>
-            <td>
-            <button type="button" className="btn"><i class="fas fa-edit"></i></button>
-            <button type="button" className="btn" onClick={this.bookDeleteAlert}><i class="fas fa-trash"></i></button>
-            
+            <td>   
+            <Link to={{
+                pathname: '/editPage',
+                book: {"id": book.id, "author": book.author, "title": book.title, "category": book.category, "url": book.url}
+                }}>  
+                <button type="button" className="btn" onClick={this.EditPage}><i class="fas fa-edit"></i></button>
+                </Link>
+                <button type="button" className="btn" onClick={this.bookDeleteAlert}><i class="fas fa-trash"></i></button> 
             </td>
             </tr>
         )

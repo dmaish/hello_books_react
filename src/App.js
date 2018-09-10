@@ -9,6 +9,7 @@ import library from './components/libraryComponent'
 import ProfilePage from './components/profilePage';
 import ResetPassword from './components/resetPassword';
 import adminDashboard from './adminComponents/adminDashboard';
+import editPage from './adminComponents/editPage';
 
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path="/profilePage" component={ProfilePage}></Route>
           <Route path="/resetPassword" component={ResetPassword}></Route>
           <Route path="/adminDashboard" component={adminDashboard}></Route>
+          <Route path="/editPage" component={editPage}></Route>
           </div>
         </Router>
         

@@ -82,13 +82,27 @@ class dashboard extends Component{
         })
     }
 
+    //add book to the admin dashboard
+    updateBooks = (newBook) => {
+        const {allbooks} = this.state
+        allbooks.push(newBook)
+        this.setState({'allbooks': allbooks})
+    }
+    // remove deleted book from dashboard
+    removeBook = (removedBook) => {
+        const {allbooks} = this.state
+        const index = allbooks.indexOf(removedBook);
+        allbooks.splice(index, 1);
+        this.setState({'allbooks': allbooks})
+    }
+
     // render the component
     render(){
         const {allbooks} = this.state
         if(allbooks)return(
             <div className='container'>
                 {/* NOTE: JUST NOT PASS THE 'GETBOOKS' METHOD TO SEE IF THIS COMPONENT WILL FETCH ALL BOOKS BASES ON THE STATE CHENGE CAUSED BY THE MODAL METHODS  */}
-                <Modal show={this.state.show} handleClose={this.hideModal} getAllBooks={this.getAllBooks}/>
+                <Modal show={this.state.show} handleClose={this.hideModal} getAllBooks={this.getAllBooks} updateBooks={this.updateBooks}/>
                 <div className="row">
                 <div class="col col-lg-2"><button className="btn btn-info" onClick={this.logoutAlert}>logout</button></div>
                 <div class="col col-lg-5"></div>
@@ -101,7 +115,6 @@ class dashboard extends Component{
                                     <table className="table  table-bordered table-sm">
                                                 <thead>
                                                     <tr>
-                                                    <th scope="col">#</th>
                                                     <th scope="col">author</th>
                                                     <th scope="col">title</th>
                                                     <th scope="col">category</th>
@@ -109,7 +122,7 @@ class dashboard extends Component{
                                                 </thead>
                                                 <tbody>
                                                 {allbooks.map((book) => 
-                                                    <SingleBookRow book={book} getAllBooks={this.getAllBooks}/>
+                                                    <SingleBookRow book={book} getAllBooks={this.getAllBooks} removeBook={this.removeBook}/>
                                                 )}
                                                 </tbody>
                                             </table>
