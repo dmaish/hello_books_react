@@ -9,7 +9,8 @@ class dashboard extends Component{
     constructor(props){
         super(props);
         this.state = {
-            show: false
+            show: false,
+            allbooks: []
         }
     }
 
@@ -35,13 +36,14 @@ class dashboard extends Component{
         }).then(
             response => response.json()  
         ).then(books => {
-            this.setState({'allbooks': books.books})
+            this.setState(() => ({'allbooks': books.books}))
         })
 
     }
 
-    // TODO this code is repeated in the logout for normal user..change
-    // LOGOUT
+    // change state not to include deleted book
+
+
      //function to handle user logging out
      logoutAlert = () => {
         swal({
@@ -88,13 +90,15 @@ class dashboard extends Component{
         allbooks.push(newBook)
         this.setState({'allbooks': allbooks})
     }
+
     // remove deleted book from dashboard
-    removeBook = (removedBook) => {
-        const {allbooks} = this.state
-        const index = allbooks.indexOf(removedBook);
-        allbooks.splice(index, 1);
-        this.setState({'allbooks': allbooks})
-    }
+    removeBook = (id) => {
+        let allbooks = this.state.allbooks.filter(book => book.id !== id);
+        console.log(allbooks)
+        this.setState(() => ({'allbooks': allbooks}))
+        }
+        
+        
 
     // render the component
     render(){

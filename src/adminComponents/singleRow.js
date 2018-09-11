@@ -51,7 +51,10 @@ class singleBookRow extends Component{
         ).then(response => {
             swal("", response.message, "info")
         })
-        .then(this.props.removeBook(this.state.book))
+        .then(() => {
+            this.props.removeBook(book.id)
+            console.log('book getting deleted', book.title)
+        })
     }
 
     render(){

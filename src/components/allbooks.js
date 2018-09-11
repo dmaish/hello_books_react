@@ -16,8 +16,6 @@ class Books extends Component{
     }
 
     render(){
-        console.log("fucking props in all books", this.props)
-        
         const {allbooks} = this.state
         const {loggedIn} = this.state
         if (allbooks)return (
