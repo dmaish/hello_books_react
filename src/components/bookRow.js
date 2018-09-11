@@ -37,7 +37,6 @@ class BookRow extends Component{
         const {book} = this.state
         const {loggedIn} = this.state
         const {borrowedStatus} = this.state
-        console.log("fucking props in borrowing", this.props)
         if(book)return(
         <tr>
             <td>{book.id}</td>

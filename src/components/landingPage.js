@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Navbar from "../commonComponents/navbar"
+import Footer from "../commonComponents/footer"
 import {Link} from "react-router-dom"
 import "../stylesheets.css"
 
@@ -22,6 +23,7 @@ class LandingPage extends Component{
                         </div>
                     </div>
                 </div>
+                <Footer/>
             </div>
         )
     }

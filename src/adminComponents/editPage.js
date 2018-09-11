@@ -20,6 +20,7 @@ class editBook extends Component{
             "category": this.props.location.book.author,
             "url": this.props.location.book.url
         })
+       
     }
 
       // STATE CHANGE BASED ON THE MODAL RECEIVING DATA
