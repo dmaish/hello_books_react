@@ -1,6 +1,15 @@
 import React, {Component} from 'react';
 import HistoryRecord from './historyRecord';
 
+export const fetchData = () => {
+    const jwt_token = localStorage.getItem('access_token')
+    return fetch("http://127.0.0.1:5000/api/users/books", {
+        method: "GET",
+        headers: {"Content-Type": "application/json",
+                    'Authorization': `Bearer ${jwt_token}`}
+    })
+}
+
 class BorrowHistory extends Component{
     constructor(props){
         super(props);
@@ -9,12 +18,8 @@ class BorrowHistory extends Component{
 
     // get user's borrowing history
     componentDidMount(){
-        const jwt_token = localStorage.getItem('access_token')
-        fetch("http://127.0.0.1:5000/api/users/books", {
-            method: "GET",
-            headers: {"Content-Type": "application/json",
-                        'Authorization': `Bearer ${jwt_token}`}
-        }).then(response => response.json())
+        fetchData()
+       .then(response => response.json())
         .then(response =>{
             this.setState({"historyRecords":response.borrowing_history})
         })
@@ -23,7 +28,7 @@ class BorrowHistory extends Component{
     render(){
         const historyRecords = this.state.historyRecords
         if(historyRecords)return(
-            <table className="table table-striped table-bordered">
+            <table id='recordTable' className="table table-striped table-bordered">
                         <thead>
                             <tr>
                             <th scope="col">author</th>

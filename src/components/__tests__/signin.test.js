@@ -22,3 +22,17 @@ describe('Sigin component renders well', () => {
         expect(shallow(<SignIn/>).find('#loginPassword').length).toEqual(1)
     })
 })
+
+// test if state changes on signup formfield input
+describe('login form fields inputs', () => {
+    it('should respond to change event and change the state of the Login Component', () => {
+        const wrapper = shallow(<SignIn />);
+        wrapper.find('#loginEmail').simulate('change', {target: {name: 'email', value: 'blah@gmail.com'}});
+        expect(wrapper.state('email')).toEqual('blah@gmail.com');
+    })
+    it('should respond to change event and change the state of the Login Component', () => {
+        const wrapper = shallow(<SignIn />);
+        wrapper.find('#passwordField').simulate('change', {target: {name: 'password', value: 'Edmond1!'}});
+        expect(wrapper.state(password)).toEqual('Edmond1');
+       })
+})

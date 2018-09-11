@@ -21,7 +21,7 @@ class Books extends Component{
         const {allbooks} = this.state
         const {loggedIn} = this.state
         if (allbooks)return (
-            <div class="card">
+            <div id="booksCard" class="card">
                 <div class="card-body">
                 <table className="table table-striped table-bordered">
                         <thead>
