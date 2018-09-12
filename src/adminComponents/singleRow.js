@@ -36,8 +36,7 @@ class singleBookRow extends Component{
               }
           });
     }
-
-    
+ 
     // method to delete book
     deleteBook = () => {
         const {book} = this.state
@@ -50,10 +49,10 @@ class singleBookRow extends Component{
             response => response.json()  
         ).then(response => {
             swal("", response.message, "info")
-        })
-        .then(() => {
-            this.props.removeBook(book.id)
-            console.log('book getting deleted', book.title)
+            if(response.message !== "you cannot delete book already borrowed" ){
+                this.props.removeBook(book.id)
+                console.log('response', response)
+            }
         })
     }
 

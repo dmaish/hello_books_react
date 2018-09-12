@@ -10,7 +10,7 @@ class dashboard extends Component{
         super(props);
         this.state = {
             show: false,
-            allbooks: []
+            "allbooks": []
         }
     }
 
@@ -30,7 +30,7 @@ class dashboard extends Component{
    
     // getting all books from the API
     getAllBooks = () => {
-        fetch("http://127.0.0.1:5000/api/books?page=1&per_page=60", {
+        fetch("http://127.0.0.1:5000/api/books?page=1&per_page=100", {
             method: "GET",
             headers: {"Content-Type": "application/json"}
         }).then(
@@ -87,8 +87,9 @@ class dashboard extends Component{
     //add book to the admin dashboard
     updateBooks = (newBook) => {
         const {allbooks} = this.state
-        allbooks.push(newBook)
-        this.setState({'allbooks': allbooks})
+        const newAllbooks = [...allbooks, newBook]
+        console.log(newAllbooks)
+        this.setState({'allbooks': newAllbooks})
     }
 
     // remove deleted book from dashboard
