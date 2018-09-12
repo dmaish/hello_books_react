@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import AllBooks from './allbooks'
+import React, {Component} from "react";
+import AllBooks from "./allbooks"
 
 class Library extends Component{
     constructor(props){
         super(props);
         this.state = {
-            'loggedIn': false
+            "loggedIn": false
         }
     }
 // fetch all books in the library
@@ -20,7 +20,7 @@ class Library extends Component{
         }).then(
             response => response.json()  
         ).then(books => {
-            this.setState({'books': books.books, 'loggedIn': this.props.loggedIn})
+            this.setState({"books": books.books, "loggedIn": this.props.loggedIn})
         })
 
     }

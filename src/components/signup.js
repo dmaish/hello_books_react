@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import history from '../utils/history'
-import swal from 'sweetalert';
+import history from "../utils/history"
+import swal from "sweetalert";
 
 
 class SignUp extends Component{
@@ -34,7 +34,7 @@ class SignUp extends Component{
         .then(response =>{
             swal(response.message)
             if(response.message === "you registered successfully"){
-                history.push('./signin')
+                history.push("./signin")
             }
         })
         

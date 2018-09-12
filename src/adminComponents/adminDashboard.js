@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import SingleBookRow from './singleRow';
-import {CardBody, CardTitle} from 'reactstrap';
-import Modal from './addModal';
-import swal from 'sweetalert';
-import history from '../utils/history'
+import React, { Component } from "react";
+import SingleBookRow from "./singleRow";
+import {CardBody, CardTitle} from "reactstrap";
+import Modal from "./addModal";
+import swal from "sweetalert";
+import history from "../utils/history"
 
 class dashboard extends Component{
     constructor(props){
@@ -36,7 +36,7 @@ class dashboard extends Component{
         }).then(
             response => response.json()  
         ).then(books => {
-            this.setState(() => ({'allbooks': books.books}))
+            this.setState(() => ({"allbooks": books.books}))
         })
 
     }
@@ -71,16 +71,16 @@ class dashboard extends Component{
     }
     // actual logout call to api
     actualLogout = () => {
-        const jwt_token = localStorage.getItem('access_token')
+        const jwt_token = localStorage.getItem("access_token")
         fetch("http://127.0.0.1:5000/api/auth/logout",{
             method: "POST",
             headers: {"Content-Type": "application/json",
-                        'Authorization': `Bearer ${jwt_token}`},
+                        "Authorization": `Bearer ${jwt_token}`},
             body: JSON.stringify(this.state)
         }).then(response => response.json())
         .then(response => {
             swal(response.message)
-            history.push('/')
+            history.push("/")
         })
     }
 
@@ -89,16 +89,15 @@ class dashboard extends Component{
         const {allbooks} = this.state
         const newAllbooks = [...allbooks, newBook]
         console.log(newAllbooks)
-        this.setState({'allbooks': newAllbooks})
+        this.setState(() => ({"allbooks": newAllbooks}))
     }
 
     // remove deleted book from dashboard
     removeBook = (id) => {
         let allbooks = this.state.allbooks.filter(book => book.id !== id);
         console.log(allbooks)
-        this.setState(() => ({'allbooks': allbooks}))
+        this.setState(() => ({"allbooks": allbooks}))
         }
-        
         
 
     // render the component
@@ -112,6 +111,7 @@ class dashboard extends Component{
                 <div class="col col-lg-2"><button className="btn btn-info" onClick={this.logoutAlert}>logout</button></div>
                 <div class="col col-lg-5"></div>
                 <div class="col col-lg-5"></div>
+                
                 </div>
                 <CardBody id='card'>
                 <CardTitle >the admin dashboard</CardTitle>

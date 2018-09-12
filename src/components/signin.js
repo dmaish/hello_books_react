@@ -1,10 +1,10 @@
-import React, {Component} from "react";
-import swal from 'sweetalert';
-import history from '../utils/history'
+import React, {Component} from "react"
+import swal from "sweetalert"
+import history from "../utils/history"
 
 class SignIn extends Component{
     constructor(props){
-        super(props);
+        super(props)
         this.state = {
             email: "",
             password: "",
@@ -35,13 +35,13 @@ class SignIn extends Component{
             .then(
                 response => {
                 swal(response.message)
-                if (response.message === 'You logged in successfully' && response.is_admin){
-                    localStorage.setItem('access_token', response.access_token)
-                    history.push('./adminDashboard')
+                if (response.message === "You logged in successfully" && response.is_admin){
+                    localStorage.setItem("access_token", response.access_token)
+                    history.push("./adminDashboard")
                 }
                 else if(response.message){
-                    localStorage.setItem('access_token', response.access_token)
-                    history.push('./profilePage')
+                    localStorage.setItem("access_token", response.access_token)
+                    history.push("./profilePage")
                 }
                 })
     }

@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import swal from 'sweetalert';
+import React, {Component} from "react";
+import swal from "sweetalert";
 
 // should the user be loggenIn, the borrow button will be displayed, and functionality executed when clicked
 class BookRow extends Component{
@@ -19,11 +19,11 @@ class BookRow extends Component{
     // handle borrowing logic when borrow button is clicked
     borrowFunction(){
         const {book} = this.state
-        const jwt_token = localStorage.getItem('access_token')
+        const jwt_token = localStorage.getItem("access_token")
         fetch(`http://127.0.0.1:5000/api/users/books/${book.id}`,{
             method: "POST",
             headers: {"Content-Type": "application/json",
-                        'Authorization': `Bearer ${jwt_token}`}
+                        "Authorization": `Bearer ${jwt_token}`}
         }).then(response => response.json())
         .then(response =>{
             // swal(response.message)

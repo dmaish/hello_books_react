@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import history from '../utils/history';
+import React, { Component } from "react";
+import history from "../utils/history";
 
 class editBook extends Component{
     constructor(props){
@@ -36,16 +36,16 @@ class editBook extends Component{
       handleSubmit = (e) => {
          // preventDefault avoids the default behavior of item calling the event if it has already been utilized
          const {id} = this.state
-         const jwt_token = localStorage.getItem('access_token')
+         const jwt_token = localStorage.getItem("access_token")
          e.preventDefault()
          fetch(`http://127.0.0.1:5000/api/books/${id}`, {
           method: "PUT",
           headers: {"Content-Type": "application/json",
-                          'Authorization': `Bearer ${jwt_token}`},
+                          "Authorization": `Bearer ${jwt_token}`},
           body: JSON.stringify(this.state)
       }).then(response => response.json())
       .then(response => console.log(response.message))
-      .then((() =>  history.push('./adminDashboard')))
+      .then((() =>  history.push("./adminDashboard")))
       }
     
     render(){

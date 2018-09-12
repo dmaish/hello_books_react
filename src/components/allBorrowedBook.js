@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import SingleBorrowedBook from './singleBorrowedBook'
+import React, {Component} from "react";
+import SingleBorrowedBook from "./singleBorrowedBook"
 
 class singleBook extends Component{
     constructor(props){
@@ -25,6 +25,7 @@ class singleBook extends Component{
     }
 
     render(){
+        console.log("allborrowed state", this.state)
         const allBooks = this.props.allBooks
         if (allBooks)return (
             <table className="table table-striped table-bordered">

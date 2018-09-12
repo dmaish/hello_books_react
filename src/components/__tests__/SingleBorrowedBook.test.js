@@ -1,9 +1,9 @@
-import React from 'react';
-import {shallow, mount} from 'enzyme';
-import SingleBorrowedBook from '../singleBorrowedBook';
+import React from "react";
+import {shallow, mount} from "enzyme";
+import SingleBorrowedBook from "../singleBorrowedBook";
 
-describe('single borrowed book', () => {
-        it('borrowed book row', () => {
+describe("single borrowed book", () => {
+        it( () => {
            const book = {
                 "title": "title",
                 "author": "author",
