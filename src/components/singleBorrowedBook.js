@@ -29,7 +29,7 @@ class singleBook extends Component {
         .then(response =>{
             swal(book.title, response.message, "info");
         }
-        ).then(() => this.props.changeState(book))
+        ).then(() => this.props.getBorrowedBooks())
     }
 
     render(){

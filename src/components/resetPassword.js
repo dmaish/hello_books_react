@@ -37,7 +37,7 @@ class ResetPassword extends Component{
         const {password} = this.state
         return(
             <div className='container'>
-            <div className='card'>
+            <div id='resetcard' className='card'>
             <div className='card-header'><h5>reset password</h5></div>
             <div  className='card-body'>
             <form onSubmit={this.handleSubmit}>
@@ -47,6 +47,7 @@ class ResetPassword extends Component{
                                 <div className="col-sm-6 ">
                                 <input 
                                     name="password"
+                                    id="passwordField"
                                     value={password}
                                     onChange= {this.handleChange}
                                     type="password" 
@@ -61,7 +62,7 @@ class ResetPassword extends Component{
                             <div className="form-group row">
                                 <div className="col-sm-4"></div>
                                 <div className="col-sm-4">
-                                <button type="submit" className="btn btn-primary">submit</button>
+                                <button id="submitButton" type="submit" className="btn btn-primary">submit</button>
                                 </div>
                                 <div className="col-sm-4"></div>
                             </div>

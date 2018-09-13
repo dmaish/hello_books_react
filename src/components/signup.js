@@ -1,6 +1,8 @@
 import React, {Component} from "react";
-import history from '../utils/history'
-import swal from 'sweetalert';
+import history from "../utils/history"
+import swal from "sweetalert";
+import logo from "../assets/library.png"
+import {Link} from "react-router-dom"
 
 
 class SignUp extends Component{
@@ -34,7 +36,7 @@ class SignUp extends Component{
         .then(response =>{
             swal(response.message)
             if(response.message === "you registered successfully"){
-                history.push('./signin')
+                history.push("./signin")
             }
         })
         
@@ -42,11 +44,11 @@ class SignUp extends Component{
 
     // method to reveal user password
     revealPassword = () => {
-        var x = document.getElementById("passwordField");
-        if (x.type === "password") {
-            x.type = "text";
+        const passwordField = document.getElementById("passwordField");
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
         } else {
-            x.type = "password";
+            passwordField.type = "password";
         }
     }
     
@@ -54,19 +56,36 @@ class SignUp extends Component{
     render(){
         const {email, username, password} = this.state;
         return(
+            <div>
+            <div>
+                        <nav className="navbar navbar-light navbar-toggleable-sm">
+                            <Link to="/" className="navbar-brand mb-0">
+                                <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>
+                                hello<span className="logoName">books</span></Link>
+
+                            <div  className=" justify-content-end">
+                                <ul className="nav">
+                                    <li className="nav-item">
+                                        <Link to="/signin" className="nav-link" >login</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
             <div className = "container main-container" data-toggle="validator">
                 <div class="card">
                     <div class="card-header">
                     <h5>signup</h5>
                     </div>
                     <div className='card-body'>
-                    <form onSubmit={this.handleSubmit}>
+                    <form className='signUpForm' onSubmit={this.handleSubmit}>
                             <div className="form-group row">
                                 <div className="col-sm-2"></div>
                                 <label className="col-sm-2 col-form-label ">email</label>
                                 <div className="col-sm-6 ">
                                 <input 
                                 name= "email"
+                                id='emailField'
                                 value={email}
                                 onChange={this.handleChange}
                                 type="email" 
@@ -83,6 +102,7 @@ class SignUp extends Component{
                                 <div className="col-sm-6 ">
                                     <input 
                                     name="username"
+                                    id='usernameField'
                                     value = {username}
                                     onChange={this.handleChange}
                                     type="text" 
@@ -125,6 +145,7 @@ class SignUp extends Component{
                     </form> 
                     </div>
                     </div> 
+            </div>
             </div>
         )
     }

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import logo from "../assets/library.png"
 
@@ -9,7 +9,7 @@ class Navbar extends Component{
                         <nav className="navbar navbar-light navbar-toggleable-sm">
                             <Link to="/" className="navbar-brand mb-0">
                                 <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>
-                                hello_books </Link>
+                                hello<span className="logoName">books</span></Link>
 
                             <div  className=" justify-content-end">
                                 <ul className="nav">

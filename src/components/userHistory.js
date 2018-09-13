@@ -1,5 +1,16 @@
-import React, {Component} from 'react';
-import HistoryRecord from './historyRecord';
+import React, {Component} from "react";
+import HistoryRecord from "./historyRecord";
+import {Link} from "react-router-dom";
+import logo from "../assets/library.png"
+
+export const fetchData = () => {
+    const jwt_token = localStorage.getItem("access_token")
+    return fetch("http://127.0.0.1:5000/api/users/books", {
+        method: "GET",
+        headers: {"Content-Type": "application/json",
+                    "Authorization": `Bearer ${jwt_token}`}
+    })
+}
 
 class BorrowHistory extends Component{
     constructor(props){
@@ -9,12 +20,8 @@ class BorrowHistory extends Component{
 
     // get user's borrowing history
     componentDidMount(){
-        const jwt_token = localStorage.getItem('access_token')
-        fetch("http://127.0.0.1:5000/api/users/books", {
-            method: "GET",
-            headers: {"Content-Type": "application/json",
-                        'Authorization': `Bearer ${jwt_token}`}
-        }).then(response => response.json())
+        fetchData()
+       .then(response => response.json())
         .then(response =>{
             this.setState({"historyRecords":response.borrowing_history})
         })
@@ -23,7 +30,11 @@ class BorrowHistory extends Component{
     render(){
         const historyRecords = this.state.historyRecords
         if(historyRecords)return(
-            <table className="table table-striped table-bordered">
+            <div className="navBar">
+                    <div class="card" >
+                        <div class="card-body">
+                            <h5 class="card-title">borrowing history</h5>
+                         <table id='recordTable' className="table table-striped table-bordered">
                         <thead>
                             <tr>
                             <th scope="col">author</th>
@@ -39,6 +50,9 @@ class BorrowHistory extends Component{
                             )}
                         </tbody>
             </table>
+            </div>
+            </div>
+            </div>
         )
         return(<p> check your connection </p>)
 }

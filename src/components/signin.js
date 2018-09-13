@@ -1,10 +1,12 @@
-import React, {Component} from "react";
-import swal from 'sweetalert';
-import history from '../utils/history'
+import React, {Component} from "react"
+import swal from "sweetalert"
+import history from "../utils/history"
+import logo from "../assets/library.png"
+import {Link} from "react-router-dom"
 
 class SignIn extends Component{
     constructor(props){
-        super(props);
+        super(props)
         this.state = {
             email: "",
             password: "",
@@ -35,9 +37,13 @@ class SignIn extends Component{
             .then(
                 response => {
                 swal(response.message)
-                if (response.message === 'You logged in successfully'){
-                    localStorage.setItem('access_token', response.access_token)
-                    history.push('./profilePage')
+                if (response.message === "You logged in successfully" && response.is_admin){
+                    localStorage.setItem("access_token", response.access_token)
+                    history.push("./adminDashboard")
+                }
+                else if(response.message){
+                    localStorage.setItem("access_token", response.access_token)
+                    history.push("./profilePage")
                 }
                 })
     }
@@ -45,19 +51,36 @@ class SignIn extends Component{
     render(){
         const {email, password} = this.state;
         return(
+            <div className="container">
+            <div>
+                        <nav className="navbar navbar-light navbar-toggleable-sm">
+                            <Link to="/" className="navbar-brand mb-0">
+                                <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>
+                                hello<span className="logoName">books</span></Link>
+
+                           <div  className=" justify-content-end">
+                                <ul className="nav">
+                                    <li className="nav-item">
+                                        <Link to="/signup" className="nav-link" >register</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
             <div className = "container container-signin">
                 <div className='card'>
                     <div className='card-header'>
                         <h5>signin</h5>
                         </div>
                     <div className='card-body'>
-                    <form onSubmit={this.handleSubmit}>
+                    <form className='signInForm' onSubmit={this.handleSubmit}>
                             <div className="form-group row">
                                 <div className="col-sm-2"></div>
                                 <label className="col-sm-2 col-form-label ">email</label>
                                 <div className="col-sm-6 ">
                                 <input 
                                 name= "email"
+                                id="loginEmail"
                                 value={email}
                                 onChange={this.handleChange}
                                 type="email" 
@@ -74,6 +97,7 @@ class SignIn extends Component{
                                 <div className="col-sm-6 ">
                                 <input 
                                     name="password"
+                                    id='loginPassword'
                                     value={password}
                                     onChange= {this.handleChange}
                                     type="password" 
@@ -95,6 +119,7 @@ class SignIn extends Component{
                     </form>
                     </div>
                     </div>
+            </div>
             </div>
         )
     }

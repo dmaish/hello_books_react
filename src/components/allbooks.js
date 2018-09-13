@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import BookRow from './bookRow'
+import BookRow from './bookRow';
 
 // class based component representing the table containing books
 // which rows as single child components.
@@ -12,29 +12,27 @@ class Books extends Component{
     }
      
     componentDidMount(){
-        this.setState({"allbooks": this.props.booksProp, "loggedIn": this.props.loggedIn})
-        
+        this.setState({"allbooks": this.props.booksProp, "loggedIn": this.props.loggedIn})    
     }
 
     render(){
-        // console.log("fucking state", this.state.allbooks)
-        
         const {allbooks} = this.state
         const {loggedIn} = this.state
         if (allbooks)return (
-            <div class="card">
+            <div id="booksCard" class="card">
                 <div class="card-body">
                 <table className="table table-striped table-bordered">
                         <thead>
                             <tr>
+                            <th scope="col">#</th>
                             <th scope="col">author</th>
                             <th scope="col">title</th>
                             <th scope="col">category</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {allbooks.map((book, key) => 
-                            <BookRow book = {book} index = {key} loggedIn = {loggedIn}/>
+                        {allbooks.map((book) => 
+                            <BookRow book = {book} key = {book.id} loggedIn = {loggedIn} reGetBooks={this.props.reGetBooks}/>
                         )}
                         </tbody>
                     </table>

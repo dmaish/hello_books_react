@@ -3,10 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/react-fontawesome": "^0.1.2",
+    "i": "^0.3.6",
+    "jest": "^23.5.0",
+    "npm": "^6.4.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-router": "^4.3.1",
     "react-scripts": "1.1.4",
+    "reactstrap": "^6.4.0",
     "sweetalert": "^2.1.0"
   },
   "scripts": {
@@ -16,7 +23,21 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "enzyme-to-json": "^3.3.4",
+    "eslint": "^5.5.0",
+    "fetch-mock": "^7.0.0-alpha.6",
     "history": "^4.7.2",
+    "jest-fetch-mock": "^1.6.5",
     "react-router-dom": "^4.3.1"
+  },
+  "setupFiles": [
+    "./src/setupTests.js"
+  ],
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }
