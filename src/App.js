@@ -12,6 +12,7 @@ import adminDashboard from "./adminComponents/adminDashboard";
 import editPage from "./adminComponents/editPage";
 import ReturnBook from "./components/returnBook";
 import BorrowPage from "./components/borrowPage"
+import AddPage from "./adminComponents/addPage"
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
           <Route path="/editPage" component={editPage}></Route>
           <Route path="/returnBooks" component={ReturnBook}></Route>
           <Route path="/borrowPage" component={BorrowPage}></Route>
+          <Route path="/addPage" component={AddPage}></Route>
           </div>
         </Router>
         

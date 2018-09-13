@@ -1,9 +1,9 @@
-import React from 'react';
-import {shallow, mount} from 'enzyme';
-import {Router} from 'react-router-dom';
-import SingleRow from '../../adminComponents/singleRow';
+import React from "react";
+import {shallow, mount} from "enzyme";
+import {Router} from "react-router-dom";
+import SingleRow from "../../adminComponents/singleRow";
 
-describe('prop changes', () => {
+describe("prop changes", () => {
     it(() => {
         const book = {
             "title": "title",
@@ -13,7 +13,7 @@ describe('prop changes', () => {
         }
         const component = <ResetPage/>
         component.setProps({book})
-        expect(component.props('book.title')).toEqual('title')
+        expect(component.props("book.title")).toEqual("title")
     })
 })
 

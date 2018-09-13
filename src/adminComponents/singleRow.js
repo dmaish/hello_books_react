@@ -29,7 +29,7 @@ class singleBookRow extends Component{
                   swal("cancelled");
                   break;
                 case "okay":
-                    this.deleteBook()
+                    this.props.deleteBook(this.state.book.id)
                     break;
                 default:
                   break;
@@ -37,24 +37,6 @@ class singleBookRow extends Component{
           });
     }
  
-    // method to delete book
-    deleteBook = () => {
-        const {book} = this.state
-        const jwt_token = localStorage.getItem("access_token")
-        fetch(`http://127.0.0.1:5000/api/books/${book.id}`, {
-            method: "DELETE",
-            headers: {"Content-Type": "application/json",
-                        "Authorization": `Bearer ${jwt_token}`}
-        }).then(
-            response => response.json()  
-        ).then(response => {
-            swal("", response.message, "info")
-            if(response.message !== "you cannot delete book already borrowed" ){
-                this.props.removeBook(book.id)
-                console.log("response", response)
-            }
-        })
-    }
 
     render(){
         const {book} = this.state

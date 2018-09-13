@@ -4,6 +4,8 @@ import {CardBody, CardTitle} from "reactstrap";
 import Modal from "./addModal";
 import swal from "sweetalert";
 import history from "../utils/history"
+import logo from "../assets/library.png"
+import {Link} from "react-router-dom"
 
 class dashboard extends Component{
     constructor(props){
@@ -84,29 +86,51 @@ class dashboard extends Component{
         })
     }
 
-    //add book to the admin dashboard
-    updateBooks = (newBook) => {
-        const {allbooks} = this.state
-        const newAllbooks = [...allbooks, newBook]
-        console.log(newAllbooks)
-        this.setState(() => ({"allbooks": newAllbooks}))
+    // ====================================
+      // METHOD TO DELETE BOOK
+      deleteBook = (id) => {
+        const bookId = id
+        const jwt_token = localStorage.getItem("access_token")
+        fetch(`http://127.0.0.1:5000/api/books/${bookId}`, {
+            method: "DELETE",
+            headers: {"Content-Type": "application/json",
+                        "Authorization": `Bearer ${jwt_token}`}
+        }).then(
+            response => response.json()  
+        ).then(response => {
+            swal("", response.message, "info")
+        }).then(() => {
+            // const library = this.state.allbooks.filter(book => book.id !== bookId)
+            this.setState(() => {return {"allbooks": this.state.allbooks.filter(book => book.id !== bookId) } })
+            console.log("after the remove method mounts", this.state )
+    })     
     }
-
-    // remove deleted book from dashboard
-    removeBook = (id) => {
-        let allbooks = this.state.allbooks.filter(book => book.id !== id);
-        console.log(allbooks)
-        this.setState(() => ({"allbooks": allbooks}))
-        }
-        
 
     // render the component
     render(){
         const {allbooks} = this.state
+        console.log("after component mounts", this.state )
         if(allbooks)return(
             <div className='container'>
+            <div>
+                        <nav className="navbar navbar-light navbar-toggleable-sm">
+                            <Link to="/" className="navbar-brand mb-0">
+                                <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>
+                                hello<span className="logoName">books</span></Link>
+
+                            <div  className=" justify-content-end">
+                                <ul className="nav">
+                                    <li className="nav-item">
+                                        <Link to="/addPage" className="nav-link" >add</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                    <Link to="/borrowPage" className="nav-link" >borrowing</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
                 {/* NOTE: JUST NOT PASS THE 'GETBOOKS' METHOD TO SEE IF THIS COMPONENT WILL FETCH ALL BOOKS BASES ON THE STATE CHENGE CAUSED BY THE MODAL METHODS  */}
-                <Modal show={this.state.show} handleClose={this.hideModal} getAllBooks={this.getAllBooks} updateBooks={this.updateBooks}/>
                 <div className="row">
                 <div class="col col-lg-2"><button className="btn btn-info" onClick={this.logoutAlert}>logout</button></div>
                 <div class="col col-lg-5"></div>
@@ -116,7 +140,9 @@ class dashboard extends Component{
                 <CardBody id='card'>
                 <CardTitle >the admin dashboard</CardTitle>
                 <span className="card-subtitle"></span>
+                <Link to="addPage" >
                 <button className="btn btn-outline-info bt-sm" onClick={this.showModal}>add new book <i class="fas fa-plus"></i></button>
+                </Link>
                                     <table className="table  table-bordered table-sm">
                                                 <thead>
                                                     <tr>
@@ -127,7 +153,7 @@ class dashboard extends Component{
                                                 </thead>
                                                 <tbody>
                                                 {allbooks.map((book) => 
-                                                    <SingleBookRow book={book} getAllBooks={this.getAllBooks} removeBook={this.removeBook}/>
+                                                    <SingleBookRow book={book} getAllBooks={this.getAllBooks} deleteBook={this.deleteBook}/>
                                                 )}
                                                 </tbody>
                                             </table>

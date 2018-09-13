@@ -1,8 +1,8 @@
-import React from 'react';
-import {mount, shallow} from 'enzyme';
-import UserHistory from '../userHistory';
+import React from "react";
+import {mount, shallow} from "enzyme";
+import UserHistory from "../userHistory";
 
-describe('testing user history', () => {
+describe("testing user history", () => {
     it(() => {
         const wrapper = mount(<UserHistory/>)
         wrapper.setState({
@@ -15,6 +15,6 @@ describe('testing user history', () => {
                 "time_returned": "September 03, 2018 13:14",
                 "title": "southpaw"}]
      })
-     expect(wrapper.find('table.table')).to.have.lengthOf(1);
+     expect(wrapper.find("table.table")).to.have.lengthOf(1);
     })
 })

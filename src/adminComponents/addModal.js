@@ -1,4 +1,4 @@
-import React, { Component}  from 'react';
+import React, { Component}  from "react";
 
 class Modal extends Component{
     constructor(props){
@@ -23,19 +23,9 @@ class Modal extends Component{
     // API CALL AFTER MODAL FORM IS SUBMITTED
     handleSubmit = (e) => {
        // preventDefault avoids the default behavior of item calling the event if it has already been utilized
-       const jwt_token = localStorage.getItem('access_token')
        e.preventDefault()
-       fetch("http://localhost:5000/api/books", {
-        method: "POST",
-        headers: {"Content-Type": "application/json",
-                        'Authorization': `Bearer ${jwt_token}`},
-        body: JSON.stringify(this.state)
-    }).then(response => response.json())
-    .then(response => console.log(response.message))
-    .then(() => {
-            this.closeModal()
-          })
-          .then(() => this.props.updateBooks(this.state) )
+       this.props.addBook(this.state)
+       this.closeModal()
     }
 
 
