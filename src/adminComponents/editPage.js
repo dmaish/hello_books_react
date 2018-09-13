@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import history from "../utils/history";
+import {Link} from "react-router-dom"
 
 class editBook extends Component{
     constructor(props){
@@ -54,7 +55,11 @@ class editBook extends Component{
         const {category} = this.state
         const {url} = this.state
         return(
-            <div class="card ">
+            <div className="container">
+            <div className="row">
+            <div className="col-md-3 col-sm-3"></div>
+            <div className="col-md-6 col-sm-6">
+            <div class="card delete-card">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <form onSubmit={this.handleSubmit}>
@@ -105,10 +110,27 @@ class editBook extends Component{
                             id="url" 
                             placeholder="enter bookcover photo url"/>
                           </div>
-                          <button type="submit" onClick={this.handleSubmit} className="btn btn-primary btn-sm">save</button>
+                           <div className="row">
+                          <div className="col-md-2 col-sm-2"></div>
+
+                          <div className="col-md-3 col-sm-3">   
+                          <Link to="/adminDashboard" class="btn btn-outline-dark btn-block delete-button">cancel</Link>
+                          </div>
+                          <div className="col-md-2 col-sm-2"> </div>
+                          <div className="col-md-3 col-sm-3"> 
+                          <button type="button" type="submit" onClick={this.handleSubmit} className="btn btn-outline-success btn-block delete-button">save</button>
+                          </div>
+
+                          <div className="col-md-2 col-sm-2"></div>
+                          </div>
                         </form>
             </div>
             </div>
+            </div>
+            </div>
+            <div className="col-md-3 col-sm-3"></div>
+            </div>
+            
         )
     }
 

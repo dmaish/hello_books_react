@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import history from "../utils/history"
 import swal from "sweetalert";
+import logo from "../assets/library.png"
+import {Link} from "react-router-dom"
 
 
 class SignUp extends Component{
@@ -54,6 +56,22 @@ class SignUp extends Component{
     render(){
         const {email, username, password} = this.state;
         return(
+            <div>
+            <div>
+                        <nav className="navbar navbar-light navbar-toggleable-sm">
+                            <Link to="/" className="navbar-brand mb-0">
+                                <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>
+                                hello<span className="logoName">books</span></Link>
+
+                            <div  className=" justify-content-end">
+                                <ul className="nav">
+                                    <li className="nav-item">
+                                        <Link to="/signin" className="nav-link" >login</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
             <div className = "container main-container" data-toggle="validator">
                 <div class="card">
                     <div class="card-header">
@@ -127,6 +145,7 @@ class SignUp extends Component{
                     </form> 
                     </div>
                     </div> 
+            </div>
             </div>
         )
     }

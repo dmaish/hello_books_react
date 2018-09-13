@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import swal from "sweetalert";
 import {Link} from "react-router-dom";
 
 class singleBookRow extends Component{
@@ -11,32 +10,6 @@ class singleBookRow extends Component{
     componentDidMount(){
         this.setState({"book": this.props.book})
     }
-
-    bookDeleteAlert = () => {
-        const {book} = this.state
-        swal({
-            title: "Are you sure...",
-            text: `you want to delete "${book.title}""`,
-            icon: "warning",
-            buttons: {
-                    cancel: "Cancel",
-                    okay: true,
-            }
-          })
-          .then((value) => {
-            switch (value) {
-                case "cancel":
-                  swal("cancelled");
-                  break;
-                case "okay":
-                    this.props.deleteBook(this.state.book.id)
-                    break;
-                default:
-                  break;
-              }
-          });
-    }
- 
 
     render(){
         const {book} = this.state
@@ -52,7 +25,14 @@ class singleBookRow extends Component{
                 }}>  
                 <button type="button" className="btn" onClick={this.EditPage}><i class="fas fa-edit"></i></button>
                 </Link>
-                <button type="button" className="btn" onClick={this.bookDeleteAlert}><i class="fas fa-trash"></i></button> 
+
+            <Link to={{
+                pathname: "/deletePage",
+                book: {"id": book.id, "author": book.author, "title": book.title, "category": book.category, "url": book.url}
+                }}>  
+                <button type="button" className="btn"><i class="fas fa-trash"></i></button> 
+                </Link>
+
             </td>
             </tr>
         )

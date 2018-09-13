@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Router, Route} from "react-router-dom";
+import {Router, Route, Redirect} from "react-router-dom";
 import SignUp from "./components/signup";
 import "./App.css";
 import history from "./utils/history";
@@ -13,6 +13,8 @@ import editPage from "./adminComponents/editPage";
 import ReturnBook from "./components/returnBook";
 import BorrowPage from "./components/borrowPage"
 import AddPage from "./adminComponents/addPage"
+import DeletePage from "./adminComponents/deletePage"
+import PrivateRoute from "./utils/privateRoute"
 
 class App extends Component {
   render() {
@@ -24,13 +26,14 @@ class App extends Component {
           <Route path="/signup" component={SignUp}></Route>
           <Route path="/signin" component={Signin}></Route>
           <Route path="/library" component={library}></Route>
-          <Route path="/profilePage" component={ProfilePage}></Route>
-          <Route path="/resetPassword" component={ResetPassword}></Route>
-          <Route path="/adminDashboard" component={adminDashboard}></Route>
-          <Route path="/editPage" component={editPage}></Route>
-          <Route path="/returnBooks" component={ReturnBook}></Route>
-          <Route path="/borrowPage" component={BorrowPage}></Route>
-          <Route path="/addPage" component={AddPage}></Route>
+          <PrivateRoute path="/profilePage" component={ProfilePage}/>
+          <PrivateRoute path="/resetPassword" component={ResetPassword}/>
+          <PrivateRoute path="/adminDashboard" component={adminDashboard}/>
+          <PrivateRoute path="/editPage" component={editPage}/>
+          <PrivateRoute path="/returnBooks" component={ReturnBook}/>
+          <PrivateRoute path="/borrowPage" component={BorrowPage}/>
+          <PrivateRoute path="/addPage" component={AddPage}/>
+          <PrivateRoute path="/deletePage" component={DeletePage}/>
           </div>
         </Router>
         

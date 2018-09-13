@@ -25,11 +25,19 @@ class singleBook extends Component{
     }
 
     render(){
-        console.log("allborrowed state", this.state)
         const allBooks = this.props.allBooks
         if (allBooks)return (
+            <div class="card" >
+                        <div class="card-body">
+                            <h6 class="card-title">books to return</h6>
             <table className="table table-striped table-bordered">
-                        <thead>
+            <thead>
+                            <tr>
+                            <th scope="col">author</th>
+                            <th scope="col">title</th>
+                            <th scope="col">category</th>
+                            <th scope="col">time borrowed</th>
+                            </tr>
                         </thead>
                         <tbody>
                         {allBooks.map((book) => 
@@ -38,10 +46,10 @@ class singleBook extends Component{
                         )}
                         </tbody>
                     </table> 
+                    </div>
+                    </div>
         )
         return(<p>no props</p>)
-
 }
-}
- 
+} 
 export default singleBook;

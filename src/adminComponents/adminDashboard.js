@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import SingleBookRow from "./singleRow";
 import {CardBody, CardTitle} from "reactstrap";
-import Modal from "./addModal";
 import swal from "sweetalert";
 import history from "../utils/history"
 import logo from "../assets/library.png"
@@ -42,10 +41,6 @@ class dashboard extends Component{
         })
 
     }
-
-    // change state not to include deleted book
-
-
      //function to handle user logging out
      logoutAlert = () => {
         swal({
@@ -84,26 +79,6 @@ class dashboard extends Component{
             swal(response.message)
             history.push("/")
         })
-    }
-
-    // ====================================
-      // METHOD TO DELETE BOOK
-      deleteBook = (id) => {
-        const bookId = id
-        const jwt_token = localStorage.getItem("access_token")
-        fetch(`http://127.0.0.1:5000/api/books/${bookId}`, {
-            method: "DELETE",
-            headers: {"Content-Type": "application/json",
-                        "Authorization": `Bearer ${jwt_token}`}
-        }).then(
-            response => response.json()  
-        ).then(response => {
-            swal("", response.message, "info")
-        }).then(() => {
-            // const library = this.state.allbooks.filter(book => book.id !== bookId)
-            this.setState(() => {return {"allbooks": this.state.allbooks.filter(book => book.id !== bookId) } })
-            console.log("after the remove method mounts", this.state )
-    })     
     }
 
     // render the component

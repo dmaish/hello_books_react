@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom"
+import history from "../utils/history"
 
 class add extends Component{
     constructor(props){
@@ -32,13 +33,20 @@ class add extends Component{
                          "Authorization": `Bearer ${jwt_token}`},
          body: JSON.stringify(this.state)
      }).then(response => response.json())
-     .then(response => console.log(response.message))
+     .then(() => history.push("/adminDashboard"))
      }
 
     render(){
       const {title, author, category, url} = this.state
         // const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
         return (
+             <div className="container">
+            <div className="row">
+            <div className="col-md-3 col-sm-3"></div>
+            <div className="col-md-6 col-sm-6">
+            <div class="card delete-card">
+            <div class="card-body">
+                <h5 class="card-title">add book</h5>
            <form onSubmit={this.handleSubmit}>
                           <div class="form-group">
                             <label for="title">title</label>
@@ -87,11 +95,27 @@ class add extends Component{
                             id="url" 
                             placeholder="enter bookcover photo url"/>
                           </div>
+                          <div className="row">
+                          <div className="col-md-2 col-sm-2"></div>
 
-                          <button type="submit" class="btn btn-primary">Submit</button>
-                          <Link to="/adminDashboard"> dashboard</Link>
+                          <div className="col-md-3 col-sm-3">   
+                          <Link to="/adminDashboard" class="btn btn-outline-dark btn-block delete-button">cancel</Link>
+                          </div>
+                          <div className="col-md-2 col-sm-2"> </div>
+                          <div className="col-md-3 col-sm-3"> 
+                          <button type="button" type="submit" className="btn btn-outline-success btn-block delete-button">add</button>
+                          </div>
 
+                          <div className="col-md-2 col-sm-2"></div>
+                          </div>
                         </form>
+                        </div>
+            </div>
+            <div className="col-md-3 col-sm-3"></div>
+            </div>
+            </div>
+            </div>
+  
           )
     }
 }
