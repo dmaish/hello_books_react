@@ -35,6 +35,13 @@
     "./src/setupTests.js"
   ],
   "jest": {
+    "collectCoverageFrom": [
+      "src/***",
+      "!src/assets",
+      "!src/registerServiceWorker.js",
+      "!src/__tests__/__snapshots__/***",
+      "!src/index.js"
+      ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
