@@ -118,7 +118,7 @@ class editBook extends Component{
                           </div>
                           <div className="col-md-2 col-sm-2"> </div>
                           <div className="col-md-3 col-sm-3"> 
-                          <button type="button" type="submit" onClick={this.handleSubmit} className="btn btn-outline-success btn-block delete-button">save</button>
+                          <button type="button" onClick={this.handleSubmit} className="btn btn-outline-success btn-block delete-button">save</button>
                           </div>
 
                           <div className="col-md-2 col-sm-2"></div>

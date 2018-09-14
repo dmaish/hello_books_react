@@ -1,9 +1,7 @@
 import React, {Component} from "react";
 import avatar from "../assets/avatar.png"
 import {Link} from "react-router-dom"
-import Library from "./libraryComponent"
 import UserHistory from "./userHistory"
-import ReturnBook from "./returnBook"
 import swal from "sweetalert";
 import history from "../utils/history"
 import logo from "../assets/library.png"

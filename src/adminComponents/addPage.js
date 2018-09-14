@@ -103,7 +103,7 @@ class add extends Component{
                           </div>
                           <div className="col-md-2 col-sm-2"> </div>
                           <div className="col-md-3 col-sm-3"> 
-                          <button type="button" type="submit" className="btn btn-outline-success btn-block delete-button">add</button>
+                          <button  type="submit" className="btn btn-outline-success btn-block delete-button">add</button>
                           </div>
 
                           <div className="col-md-2 col-sm-2"></div>

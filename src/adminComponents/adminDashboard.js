@@ -98,9 +98,6 @@ class dashboard extends Component{
                                     <li className="nav-item">
                                         <Link to="/addPage" className="nav-link" >add</Link>
                                     </li>
-                                    <li className="nav-item">
-                                    <Link to="/borrowPage" className="nav-link" >borrowing</Link>
-                                    </li>
                                 </ul>
                             </div>
                         </nav>

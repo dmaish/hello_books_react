@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly in "debug" mode 1`] = `
+<div
+  className="App"
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <div>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        path="/signup"
+      />
+      <Route
+        component={[Function]}
+        path="/signin"
+      />
+      <Route
+        component={[Function]}
+        path="/library"
+      />
+      <PrivateRoute
+        component={[Function]}
+        path="/profilePage"
+      />
+      <PrivateRoute
+        component={[Function]}
+        path="/resetPassword"
+      />
+      <PrivateRoute
+        component={[Function]}
+        path="/adminDashboard"
+      />
+      <PrivateRoute
+        component={[Function]}
+        path="/editPage"
+      />
+      <PrivateRoute
+        component={[Function]}
+        path="/returnBooks"
+      />
+      <PrivateRoute
+        component={[Function]}
+        path="/borrowPage"
+      />
+      <PrivateRoute
+        component={[Function]}
+        path="/addPage"
+      />
+      <PrivateRoute
+        component={[Function]}
+        path="/deletePage"
+      />
+    </div>
+  </Router>
+</div>
+`;

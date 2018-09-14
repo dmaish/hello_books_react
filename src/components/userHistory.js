@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import HistoryRecord from "./historyRecord";
-import {Link} from "react-router-dom";
-import logo from "../assets/library.png"
 
 export const fetchData = () => {
     const jwt_token = localStorage.getItem("access_token")
