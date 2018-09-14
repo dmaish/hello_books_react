@@ -1,91 +1,151 @@
 import React, {Component} from "react";
+import history from "../utils/history"
+import swal from "sweetalert";
+import logo from "../assets/library.png"
+import {Link} from "react-router-dom"
+
 
 class SignUp extends Component{
     constructor(props){
         super(props);
         this.state = {
-            user: {
                 email: "",
                 username: "",
                 password: ""
-            }
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     handleChange (e) {
+        // preventDefault avoids the default behavior of item calling the event if it has already been utilized
         e.preventDefault()
-        const {name, value} = e.target
-        const user = this.state
         this.setState({
-            user: {
-                ...user,
-                [name]:value
-            }
+            [e.target.name]: e.target.value 
         })
     }
+
+
     handleSubmit (e) {
+        /** method to handle submission of form */ 
         e.preventDefault()
-        this.props.onSubmit(this.state)
+        fetch("http://localhost:5000/api/auth/register", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(this.state)
+        }).then(response => response.json())
+        .then(response =>{
+            swal(response.message)
+            if(response.message === "you registered successfully"){
+                history.push("./signin")
+            }
+        })
+        
     }
+
+    // method to reveal user password
+    revealPassword = () => {
+        const passwordField = document.getElementById("passwordField");
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+        } else {
+            passwordField.type = "password";
+        }
+    }
+    
+
     render(){
-        const user = this.state;
+        const {email, username, password} = this.state;
         return(
-            <div className = "container main-container">
-                    <form onSubmit={this.handleSubmit}>
-                            <div class="form-group row">
-                                <div class="col-sm-2"></div>
-                                <label class="col-sm-2 col-form-label ">email</label>
-                                <div class="col-sm-6 ">
+            <div>
+            <div>
+                        <nav className="navbar navbar-light navbar-toggleable-sm">
+                            <Link to="/" className="navbar-brand mb-0">
+                                <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>
+                                hello<span className="logoName">books</span></Link>
+
+                            <div  className=" justify-content-end">
+                                <ul className="nav">
+                                    <li className="nav-item">
+                                        <Link to="/signin" className="nav-link" >login</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+            <div className = "container main-container" data-toggle="validator">
+                <div class="card">
+                    <div class="card-header">
+                    <h5>signup</h5>
+                    </div>
+                    <div className='card-body'>
+                    <form className='signUpForm' onSubmit={this.handleSubmit}>
+                            <div className="form-group row">
+                                <div className="col-sm-2"></div>
+                                <label className="col-sm-2 col-form-label ">email</label>
+                                <div className="col-sm-6 ">
                                 <input 
                                 name= "email"
-                                value={user.email}
+                                id='emailField'
+                                value={email}
                                 onChange={this.handleChange}
                                 type="email" 
-                                class="form-control " 
+                                className="form-control " 
                                 placeholder="email"
+                                required
                                 />
                             </div>
-                                <div class="col-sm-2"></div>
+                                <div className="col-sm-2"></div>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-sm-2"></div>
-                                <label class="col-sm-2 col-form-label ">username</label>
-                                <div class="col-sm-6 ">
+                            <div className="form-group row">
+                                <div className="col-sm-2"></div>
+                                <label className="col-sm-2 col-form-label ">username</label>
+                                <div className="col-sm-6 ">
                                     <input 
                                     name="username"
-                                    value = {user.username}
+                                    id='usernameField'
+                                    value = {username}
                                     onChange={this.handleChange}
-                                    type="email" 
-                                    class="form-control " 
+                                    type="text" 
+                                    className="form-control " 
                                     placeholder="username"
+                                    required
                                     />
                             </div>
-                            <div class="col-sm-2"></div>
+                            <div className="col-sm-2"></div>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-sm-2"></div>
-                                <label class="col-sm-2 col-form-label ">password</label>
-                                <div class="col-sm-6 ">
+                            <div className="form-group row">
+                                <div className="col-sm-2"></div>
+                                <label className="col-sm-2 col-form-label ">password</label>
+                                <div className="col-sm-6 ">
                                     <input 
                                     name="password"
-                                    value={user.password}
+                                    id="passwordField"
+                                    value={password}
                                     onChange= {this.handleChange}
-                                    type="email" 
-                                    class="form-control " 
+                                    type="password" 
+                                    className="form-control " 
                                     placeholder="password"
+                                    data-minlength="8"
+                                    required
                                     />
-                            </div>
-                            <div class="col-sm-2"></div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-4"></div>
-                                <div class="col-sm-4">
-                                <a href="login.html" type="submit" class="btn btn-primary btn-sm">submit</a>
                                 </div>
-                                <div class="col-sm-4"></div>
                             </div>
-                    </form>  
+                            <div className="form-group row">
+                                <div className="col-sm-4"></div>
+                                <div className="col-sm-4"><input type="checkbox" onClick={this.revealPassword}/> show password</div>
+                                <div className="col-sm-4"></div>
+                            </div>
+                            <div className="form-group row">
+                                <div className="col-sm-4"></div>
+                                <div className="col-sm-4">
+                                <button type="submit" className="btn btn-primary">submit</button>
+                                </div>
+                                <div className="col-sm-4"></div>
+                            </div>
+                    </form> 
+                    </div>
+                    </div> 
+            </div>
             </div>
         )
     }
